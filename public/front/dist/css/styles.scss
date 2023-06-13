@@ -1,0 +1,411 @@
+// Start Mixins
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flexBox($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+// End Mixins
+//######################################################################
+// Global Rules Start
+@import url("https://fonts.googleapis.com/css2?family=Gulzar&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap");
+
+// Variables
+$main-color: #1f2125;
+$main-color-alt: #343a40;
+$main-color-hover: #2ca4ab;
+$hero-background-color: #1d2222;
+$white-color: white;
+$font-color: #e7e9ea;
+$paragraph-color: #777;
+$main-transition: 0.4s;
+$main-line-height: 1.4;
+$title-font: "Gulzar", serif;
+$main-font: "IBM Plex Sans Arabic", sans-serif;
+
+$seek-before-width: 0%;
+$buffered-width: 50%;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+body {
+  font-family: $main-font;
+  background-color: $main-color;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1439px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: $main-color;
+  width: 10px;
+  transition: $main-transition;
+}
+
+::-webkit-scrollbar-button {
+  background-color: $main-color-alt;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color-alt;
+}
+
+// Global Rules End
+// ###############################################################################################################################
+// Start Header
+.header {
+  background-color: $main-color-alt;
+  .container {
+    .navbar {
+      ul {
+        @include flexBox(unset, center);
+        li {
+          padding: 20px 0px;
+          a {
+            padding: 20px 30px;
+            color: $font-color;
+            transition: $main-transition;
+            font-size: 18px;
+          }
+          a:hover {
+            color: $main-color-hover;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 769px) {
+  .header {
+    .container {
+      .navbar {
+        ul {
+          li {
+            a {
+              padding: 15px 20px;
+              font-size: 16px;
+              cursor: default;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// End Header
+// ###############################################################################################################################
+// Start Hero
+.hero {
+  background-color: $hero-background-color;
+  .container {
+    overflow: hidden;
+    .content {
+      position: relative;
+      @include flexCenter();
+      height: 40vh;
+      h1.main {
+        font-family: $title-font;
+        color: $white-color;
+        font-size: 50px;
+        z-index: 2;
+      }
+      h1.background {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: $title-font;
+        color: $main-color-alt;
+        font-size: 160px;
+        text-align: center;
+        opacity: 0.5;
+        z-index: 1;
+      }
+    }
+  }
+}
+@media (max-width: 769px) {
+  .hero {
+    .container {
+      .content {
+        h1.main {
+          font-size: 40px;
+        }
+        h1.background {
+          top: 20%;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 100px;
+        }
+      }
+    }
+  }
+}
+// End Hero
+// ###############################################################################################################################
+// Start Main Content
+.main-content {
+  margin-top: 50px;
+  .container {
+    .content {
+      ul {
+        border-bottom: 1px solid $main-color-alt;
+        @include flexBox(unset, center);
+        li {
+          color: $font-color;
+          transition: $main-transition;
+          padding: 20px 30px;
+          cursor: pointer;
+        }
+        li:hover {
+          color: $main-color-hover;
+        }
+        li.active {
+          position: relative;
+          transition: $main-transition;
+        }
+        li.active::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          border-radius: 5px;
+          background-color: $white-color;
+          bottom: 0;
+          left: 0;
+        }
+      }
+      .tab-content {
+        > div {
+          margin: 20px 0;
+          display: none;
+        }
+        div.active {
+          display: flex;
+        }
+        .voices {
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+          .voice:hover {
+            border-color: $main-color-hover;
+            .time {
+              color: $main-color-hover;
+            }
+          }
+        }
+        .videos {
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+          .video {
+            width: 350px;
+            border: 1px solid $main-color-alt;
+            border-radius: 5px;
+            transition: $main-transition;
+            cursor: pointer;
+            position: relative;
+            a {
+              padding: 25px 20px;
+              width: 100%;
+              @include flexBox(space-between, center);
+              position: relative;
+              .name {
+                font-weight: bold;
+                font-size: 20px;
+                color: $font-color;
+                position: relative;
+                width: 80%;
+              }
+              .time {
+                font-size: 14px;
+                color: $paragraph-color;
+                transition: $main-transition;
+              }
+            }
+          }
+          .video:hover {
+            border-color: $main-color-hover;
+            .time {
+              color: $main-color-hover;
+            }
+          }
+        }
+      }
+    }
+    .video-content {
+      .title {
+        color: $font-color;
+        font-size: 30px;
+        margin: 30px 0;
+      }
+      .video-container {
+        @include flexCenter();
+        video {
+          max-width: 100%;
+        }
+        iframe {
+          max-width: 100%;
+        }
+      }
+      .description {
+        padding: 20px;
+        color: $main-color-hover;
+        font-size: 20px;
+        margin: 20px 0;
+        line-height: $main-line-height;
+      }
+    }
+    .bio-content {
+      padding: 20px;
+      color: $main-color-hover;
+      font-size: 20px;
+      margin: 20px 0;
+      line-height: $main-line-height;
+    }
+  }
+}
+@media (max-width: 769px) {
+  .main-content {
+    margin-top: 30px;
+    .container {
+      .content {
+        ul {
+          li {
+            padding: 20px 20px;
+            cursor: default;
+          }
+        }
+        .tab-content {
+          .voices {
+            position: relative;
+            audio-player {
+              position: relative;
+              width: 90%;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+          .videos {
+            .video {
+              width: 100%;
+              a {
+                padding: 20px 15px;
+                width: 100%;
+                cursor: default;
+                .name {
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .video-content {
+        .title {
+          color: $font-color;
+          font-size: 26px;
+          margin: 30px 0;
+        }
+        .video-container {
+          @include flexCenter();
+          video {
+            max-width: 100%;
+          }
+          iframe {
+            max-width: 100%;
+          }
+        }
+        .description {
+          line-height: 1.8;
+        }
+      }
+      .bio-content {
+        line-height: 1.8;
+      }
+    }
+  }
+}
+// End Main Content
+// ###############################################################################################################################
+// Start Footer
+.footer {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: default;
+  color: $main-color-hover;
+  .copyright {
+    margin: 10px 0;
+    p {
+      .name {
+        font-family: $title-font;
+      }
+    }
+  }
+  .socials {
+    margin: 10px 0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    p {
+      a {
+        color: $paragraph-color;
+      }
+    }
+    .youtube {
+      width: fit-content;
+      img {
+        margin: 10px 0;
+        width: 25px;
+      }
+    }
+  }
+}
+// End Footer
+// ###############################################################################################################################
