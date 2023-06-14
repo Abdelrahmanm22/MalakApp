@@ -23,6 +23,7 @@ class BookController extends Controller
     }
     public function addBook(){
         $myUser=Auth::user();
+        
         return view('back.addBook', compact('myUser'))->with('title','Add Book');
     } 
     public function postAddBook(Request $request){

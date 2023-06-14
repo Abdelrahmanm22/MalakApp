@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\BookController;
+use App\Http\Controllers\Back\SectionController;
 use App\Http\Controllers\Back\VoiceController;
 use App\Http\Controllers\Back\VideoController;
 use App\Http\Controllers\Back\SettingController;
@@ -73,6 +74,14 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         Route::get('/updateBook/{id}',[BookController::class, 'update'])->name('updateBook');
         Route::post('/postUpdateBook/{id}',[BookController::class,'postUpdate'])->name('admin.update.book');
         //////////////////////Routes For Books//////////////////////
+
+        //////////////////////Routes For Sections//////////////////////
+        Route::get('/Sections', [SectionController::class, 'index'])->name('allSections');
+        Route::get('/addSection', [SectionController::class, 'addSection'])->name('addSection');
+        Route::post('/postAddSection', [SectionController::class, 'postAddSection'])->name('postAddSection');
+        Route::get('/updateSection/{id}',[SectionController::class, 'update'])->name('updateSection');
+        Route::post('/postUpdateSection/{id}',[SectionController::class,'postUpdate'])->name('admin.update.section');
+        //////////////////////Routes For Sections//////////////////////
     });
     
 });

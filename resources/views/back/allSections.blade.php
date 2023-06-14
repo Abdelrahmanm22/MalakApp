@@ -47,13 +47,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item ">
-                  <a href="{{route('allVoices')}}" class="nav-link ">
+                  <a href="{{route('allVoices')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Voices</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allVideos')}}" class="nav-link active">
+                  <a href="{{route('allVideos')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Videos</p>
                   </a>
@@ -71,7 +71,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allSections')}}" class="nav-link ">
+                  <a href="{{route('allSections')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Sections</p>
                   </a>
@@ -93,7 +93,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Update Video</h1>
+          <h1 class="m-0">Sections For Book</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -109,78 +109,52 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-    <div class="card card-primary">
-            @if(Session::has('success'))
+    <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Sections Table</h3>
+              </div>
+              <!-- /.card-header -->
+              @if(Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                  {{Session::get('error')}}
+                </div>
+              @endif
+              @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
                   {{Session::get('success')}}
                 </div>
-            @endif
-              <div class="card-header">
-                <h3 class="card-title">Update Video</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{route('admin.update.video',$video->video_id)}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputTitle">Video Title</label>
-                    <input type="text" class="form-control" value="{{$video->title}}"  name="title"  id="exampleInputTitle" placeholder="Enter Voice Title">
-                    @error('title')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputDescription">Video Description</label>
-                    <textarea rows="4" cols="50" class="form-control" name="desc" id="exampleInputDescription" placeholder="Description">{{$video->description}}</textarea>
-                    @error('desc')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  <div class="alert alert-warning" role="alert">
-                    Please Enter <a href="#" class="alert-link">URL of Video in YouTube </a> OR <a href="#" class="alert-link">Upload Video From PC</a>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputURL">URL Video</label>
-                    <input type="text" class="form-control" value="{{$video->iframe}}"  name="iframe"  id="exampleInputURL" placeholder="Enter URL Video">
-                    @error('iframe')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  
-                  
-                  <div class="form-group">
-                    <!-- <img src="" width="100px" height="100px"> -->
-                    <label for="exampleInputVideo">Video File</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="video" value="{{$video->video}}" class="custom-file-input"  id="exampleInputVideo">
-                        
-                        <label class="custom-file-label" value for="exampleInputVideo">{{$video->video}}</label>
-                        
-                      </div>
-                      
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                      
-                    </div>
-                    @error('video')
-                        <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div> 
-                  
-                  
-                  <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
+              @endif
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Section Title</th>
+                      <th>For Book</th>
+                      <th>Counts of Records</th>
+                      <th>Admin Name</th>
+                      <th>UPDATE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($mySections as $s)
+                      <tr>
+                      <td style="width: 10px">{{ $loop->iteration }}</td>
+                      <td>{{$s->title}}</td>
+                      <td>{{$s->name}}</td>  <!-- for section name -->
+                      <td>{{$s->count}}</td>
+                      <td>{{$s->user_name}}</td>
+                      <td><a href="{{url('admin/updateSection/'.$s->section_id)}}" class="btn btn-default">update</a></td>
+                      </tr>
+                  @endforeach
                     
-                </div>
-                
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-              </form>
+                  </tbody>
+                </table>
+                <a href="{{route('addSection')}}" class="btn btn-dark">Add Section</a>
+              </div>
+              
+              <!-- /.card-body -->
+              
             </div>
             <!-- /.card -->
     </div><!-- /.container-fluid -->
