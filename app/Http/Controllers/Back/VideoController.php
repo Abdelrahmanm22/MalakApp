@@ -24,10 +24,11 @@ class VideoController extends Controller
     }
     public function addVideo(){
         $myUser=Auth::user();
-        return view('back.addVideo', compact('myUser'))->with('title','Add Voice');
+        return view('back.addVideo', compact('myUser'))->with('title','Add Video');
     } 
     public function postAddVideo(Request $request){
         $video_file_name = "Not Found";
+        $iframe = "NULL";
         $myUser=Auth::user();
         $validator = Validator::make($request->all(),[
             'title'=>'required|max:200',
@@ -81,6 +82,15 @@ class VideoController extends Controller
         // echo $request->video;die;
         $video = Video::find($id);
         $myUser = Auth::user();
+        $validator = Validator::make($request->all(),[
+            'title'=>'required|max:200',
+            'desc'=>'required',
+            'iframe' => 'required_without_all:video',
+            'video' => 'mimes:mp4,mov,avi|max:10000',
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
         
         //get Image for God
         if(!empty($request->video)){

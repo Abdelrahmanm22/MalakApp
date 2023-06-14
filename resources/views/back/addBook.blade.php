@@ -53,7 +53,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allVideos')}}" class="nav-link active">
+                  <a href="{{route('allVideos')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Videos</p>
                   </a>
@@ -65,7 +65,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allBooks')}}" class="nav-link ">
+                  <a href="{{route('allBooks')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>
                   </a>
@@ -87,7 +87,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Add Video</h1>
+          <h1 class="m-0">Add Book</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -110,34 +110,24 @@
                 </div>
             @endif
               <div class="card-header">
-                <h3 class="card-title">Add Video</h3>
+                <h3 class="card-title">Add Book</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('postAddVideo')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('postAddBook')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputTitle">Video Title</label>
-                    <input type="text" class="form-control"  name="title"  id="exampleInputTitle" placeholder="Enter Video Title">
+                    <label for="exampleInputName">Book Name</label>
+                    <input type="text" class="form-control"  name="name"  id="exampleInputName" placeholder="Enter Book Name">
                     @error('title')
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputDescription">Video Description</label>
-                    <textarea rows="4" cols="50" class="form-control" name="desc" id="exampleInputDescription" placeholder="Description"></textarea>
-                    @error('desc')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  <div class="alert alert-warning" role="alert">
-                    Please Enter <a href="#" class="alert-link">URL of Video in YouTube </a> OR <a href="#" class="alert-link">Upload Video From PC</a>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputTitle">URL Video</label>
-                    <input type="text" class="form-control"  name="iframe"  id="exampleInputTitle" placeholder="Enter URL Video">
-                    @error('iframe')
+                    <label for="exampleInputType">Book Type</label>
+                    <input type="text" class="form-control"  name="type"  id="exampleInputType" placeholder="Enter Book Type">
+                    @error('type')
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
@@ -145,12 +135,12 @@
                   
                   <div class="form-group">
                     <!-- <img src="" width="100px" height="100px"> -->
-                    <label for="exampleInputFile">Video File</label>
+                    <label for="exampleInputFile">Image File</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="video" class="custom-file-input"  id="exampleInputFile">
+                        <input type="file" name="image" placeholder="Enter Book Image" class="custom-file-input"  id="exampleInputFile">
                         
-                        <label class="custom-file-label" for="exampleInputFile"></label>
+                        <label class="custom-file-label" for="exampleInputFile">choose image</label>
                         
                       </div>
                       
@@ -159,7 +149,7 @@
                       </div>
                       
                     </div>
-                    @error('video')
+                    @error('image')
                         <small class="form-txt text-danger">{{$message}}</small>
                       @enderror
                   </div> 

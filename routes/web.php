@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\Back\BookController;
 use App\Http\Controllers\Back\VoiceController;
 use App\Http\Controllers\Back\VideoController;
 use App\Http\Controllers\Back\SettingController;
@@ -63,6 +64,15 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         Route::get('/updateSetting/{id}',[SettingController::class,'update']);
         Route::post('/postUpdate/{id}',[SettingController::class,'postUpdate'])->name('admin.update.setting');
         ///for settings=================================
+
+
+        //////////////////////Routes For Books//////////////////////
+        Route::get('/books', [BookController::class, 'index'])->name('allBooks');
+        Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook');
+        Route::post('/postAddBook', [BookController::class, 'postAddBook'])->name('postAddBook');
+        Route::get('/updateBook/{id}',[BookController::class, 'update'])->name('updateBook');
+        Route::post('/postUpdateBook/{id}',[BookController::class,'postUpdate'])->name('admin.update.book');
+        //////////////////////Routes For Books//////////////////////
     });
     
 });

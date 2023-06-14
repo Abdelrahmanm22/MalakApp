@@ -4,7 +4,7 @@
       <div class="container">
         <div class="video-content">
           <h2 class="title">صحيح البخارى - باب افشاء السلام</h2>
-          @if($video->video!="Not Found")
+          @if($video->iframe=="NULL")
             <div class="video-container">
               <video controls controlsList="nodownload">
                 <source

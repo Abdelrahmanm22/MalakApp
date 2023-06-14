@@ -66,6 +66,15 @@ class VoiceController extends Controller
 
         $voice = Voice::find($id);
         $myUser = Auth::user();
+        $validator = Validator::make($request->all(),[
+            'title'=>'required|max:100',
+            
+        ]);
+
+        //check if data is not correct
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
         if(!empty($request->audio)){
             
             $audio_file_name =$this->saveFile($request->audio,'files/voices');

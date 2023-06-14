@@ -44,7 +44,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('adminHome')}}" class="nav-link">Home</a>
-        @if($myUser->user_name=="abdallah")
+        @if($myUser->user_id==2)
           <a href="{{route('register')}}" class="nav-link">Add Admin</a>
         @endif
       </li>
