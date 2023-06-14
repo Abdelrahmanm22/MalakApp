@@ -19,6 +19,7 @@
     
     <script src="{{URL::asset('front/dist/js/qa-modal.js')}}"></script>
     <script src="{{URL::asset('front/dist/js/dropdown-menu.js')}}"></script>
+    <script type="module" src="{{URL::asset('front/dist/js/audio-player.js')}}"></script>
     <link rel="stylesheet" href="{{URL::asset('front/dist/css/styles.css')}}" />
     <link rel="stylesheet" href="{{URL::asset('front/dist/css/normalize.css')}}" />
     <link

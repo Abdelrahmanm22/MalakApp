@@ -106,7 +106,9 @@ Route::group(['namespace'=>'Front'],function(){
     Route::get('/timeLectures', [HomeController::class, 'timeLectures'])->name('timeLectures');
     Route::get('/fatawy', [HomeController::class, 'fatawy'])->name('fatawy');
     Route::get('sectionsVideo/{id}',[HomeController::class, 'sectionsVideo'])->name('sectionsVideo');
+    Route::get('sectionsVoices/{id}',[HomeController::class, 'sectionsVoices'])->name('sectionsVoices');
     Route::get('video/{id}',[HomeController::class, 'getVideo'])->name('getVideo');
+    Route::get('voice/{id}',[HomeController::class, 'getVoices'])->name('getVoices');
     Route::post('postContact/',[ContactsController::class,'postContact'])->name('postContact');
     
 });

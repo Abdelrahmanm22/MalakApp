@@ -16,7 +16,7 @@
                 <a href="{{url('sectionsVideo/'.$b->book_id)}}">
                   <div class="book-cover">
                     <img
-                      src="{{URL::asset('front/assets/books cover/download.jpeg')}}"
+                      src="{{URL::asset('files/books/'.$b->image)}}"
                       alt="صحيح البخارى"
                     />
                   </div>

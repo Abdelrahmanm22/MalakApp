@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Section;
 use App\Models\Setting;
 use App\Models\Video;
 use App\Models\Voice;
@@ -31,19 +32,23 @@ class HomeController extends Controller
         $sections = DB::table('sections')->where('book_id', $id)
         ->get();
         $videos = DB::table('videos')->get();
-        return view('front.video-book-section',compact('sections','videos'));
+        return view('front.video-book-sections',compact('sections','videos'));
     }
     public function getVideo($id){
         $myVideo = Video::find($id);
         return view('front.video',compact('myVideo'));
 
     }
-    public function video($id){
-        $video = Video::find($id);
-        if(!$video){
-            return redirect()->back();
-        }
-        $settings=Setting::first();
-        return view('front.video',compact('video','settings'));
+    
+    public function sectionsVoices($id){
+        $sections = DB::table('sections')->where('book_id', $id)
+        ->get();
+        return view('front.voices-book-sections',compact('sections'));
+    }
+    public function getVoices($id){
+        $voices = DB::table('voices')->where('section_id', $id)
+        ->get();
+        $mySection = Section::find($id);
+        return view('front.voices',compact('voices','mySection'));
     }
 }

@@ -7,126 +7,22 @@
             <h1>الكتب المسجلة صوتيًا</h1>
           </div>
           <div class="books">
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="{{URL::asset('front/assets/books cover/download.jpeg')}}"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
-            <div class="book">
-              <a href="./voices-book-sections.html">
-                <div class="book-cover">
-                  <img
-                    src="./assets/books cover/download.jpeg"
-                    alt="صحيح البخارى"
-                  />
-                </div>
-                <p class="name">صحيح البخاري</p>
-                <p class="description">
-                  الجامع المسند الصحيح المختصر من أُمور رسول الله صلى الله عليه
-                  وسلّم وسننه وأيامه
-                </p>
-              </a>
-            </div>
+            @foreach($myBooks as $b)
+              <div class="book">
+                <a href="{{url('sectionsVoices/'.$b->book_id)}}">
+                  <div class="book-cover">
+                    <img
+                      src="{{URL::asset('files/books/'.$b->image)}}"
+                      alt="صحيح البخارى"
+                    />
+                  </div>
+                  <p class="name">{{$b->name}} </p>
+                  <p class="description">
+                    {{$b->type}}
+                  </p>
+                </a>
+              </div>
+            @endforeach
           </div>
         </div>
       </div>
