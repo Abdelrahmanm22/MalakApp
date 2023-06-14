@@ -9,6 +9,7 @@ use App\Http\Controllers\Back\VoiceController;
 use App\Http\Controllers\Back\VideoController;
 use App\Http\Controllers\Back\SettingController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ContactsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,8 +101,12 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
 });
 
 Route::group(['namespace'=>'Front'],function(){
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/biography', [HomeController::class, 'biography'])->name('biography');
-    Route::get('/video/{id}', [HomeController::class, 'video'])->name('video');
-
+    Route::get('/', [HomeController::class, 'index'])->name('videos');
+    Route::get('/voices', [HomeController::class, 'indexVoices'])->name('voices');
+    Route::get('/timeLectures', [HomeController::class, 'timeLectures'])->name('timeLectures');
+    Route::get('/fatawy', [HomeController::class, 'fatawy'])->name('fatawy');
+    Route::get('sectionsVideo/{id}',[HomeController::class, 'sectionsVideo'])->name('sectionsVideo');
+    Route::get('video/{id}',[HomeController::class, 'getVideo'])->name('getVideo');
+    Route::post('postContact/',[ContactsController::class,'postContact'])->name('postContact');
+    
 });

@@ -22,8 +22,10 @@ class AudioPlayer extends HTMLElement {
             -webkit-transition: 0.4s;
             transition: 0.4s;
             cursor: pointer;
-        }
-        .voice .upper-voice {
+            position: relative;
+          }
+          .voice .upper-voice {
+          position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -38,7 +40,16 @@ class AudioPlayer extends HTMLElement {
             font-weight: bold;
             font-size: 20px;
             color: #e7e9ea;
-        }
+            position: relative;
+            width: 80%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 15px;
+          }
+          .voice .upper-voice .name svg {
+            filter: invert(53%) sepia(64%) saturate(453%) hue-rotate(135deg) brightness(91%) contrast(91%);
+          }
         .voice .upper-voice .time {
             font-size: 14px;
             color: #777;
@@ -158,7 +169,6 @@ class AudioPlayer extends HTMLElement {
         }
         @media (max-width: 769px) {
             .voice {
-              width: 100%;
               padding: 20px 15px;
               cursor: default;
             }
@@ -171,7 +181,7 @@ class AudioPlayer extends HTMLElement {
     <div class="voice">
         <div class="upper-voice">
         <audio preload="metadata" loop></audio>
-            <p class="name"><slot></slot></p>
+            <p class="name"><a download><svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM376.9 294.6L269.8 394.5c-3.8 3.5-8.7 5.5-13.8 5.5s-10.1-2-13.8-5.5L135.1 294.6c-4.5-4.2-7.1-10.1-7.1-16.3c0-12.3 10-22.3 22.3-22.3l57.7 0 0-96c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32l0 96 57.7 0c12.3 0 22.3 10 22.3 22.3c0 6.2-2.6 12.1-7.1 16.3z"/></svg></a><slot></slot></p>
             <div class="play-pause">
               <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"/></svg>
             </div>
@@ -311,6 +321,7 @@ class AudioPlayer extends HTMLElement {
     if (name === "src") {
       this._audioPlayerSRC = newValue;
       this.shadowRoot.querySelector("audio").setAttribute("src", newValue);
+      this.shadowRoot.querySelector(".name a").setAttribute("href", newValue);
     }
   }
 

@@ -19,14 +19,14 @@ class VideoController extends Controller
         $myVideos=DB::table('users')
         ->join('videos', 'users.user_id', '=', 'videos.user_id')
         ->join('sections', 'sections.section_id', '=', 'videos.section_id')
-        ->select('users.user_name','sections.section_id','sections.title','users.user_id', 'videos.*')
+        ->select('users.user_name','sections.section_id','sections.title as sectionTitle','users.user_id', 'videos.*')
         ->get();
         return view('back.allVideos', compact('myUser','myVideos'))->with('title','Videos');
     }
-    // public function addVideo(){
-    //     $myUser=Auth::user();
-    //     return view('back.addVideo', compact('myUser'))->with('title','Add Video');
-    // } 
+    public function addVideo(){
+        $myUser=Auth::user();
+        return view('back.addVideo', compact('myUser'))->with('title','Add Video');
+    } 
     public function postAddVideo(Request $request){
         $video_file_name = "Not Found";
         $iframe = "NULL";

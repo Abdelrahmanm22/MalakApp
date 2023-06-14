@@ -16,13 +16,13 @@ class DropdownController extends Controller
     {
         $data['books'] = Book::get(["name", "book_id"]);
         $myUser=Auth::user();
-        return view('back.addVideo', $data,compact('myUser',));
+        return view('back.addVideo', $data,compact('myUser',))->with('title','Add Videos');
     }
     public function index2()
     {
         $data['books'] = Book::get(["name", "book_id"]);
         $myUser=Auth::user();
-        return view('back.addVoice', $data,compact('myUser',))->with('title','Add Videos');
+        return view('back.addVoice', $data,compact('myUser',))->with('title','Add Voices');
     }
 
 

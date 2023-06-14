@@ -152,7 +152,7 @@
                       <td>{{$v->description}}</td>
                       <td>{{$v->iframe}}</td>
                       <td>{{$v->video}}</td>
-                      <th>{{$v->title}}</th>
+                      <th>{{$v->sectionTitle}}</th>
                       <td>{{$v->user_name}}</td>
                       <!-- <td><a href="{{url('admin/updateVideo/'.$v->video_id)}}" class="btn btn-default">update</a></td> -->
                       <td><a href="{{url('admin/deleteVideo/'.$v->video_id)}}" class="btn btn-danger">Delete</a></td>
