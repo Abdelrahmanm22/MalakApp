@@ -14,6 +14,8 @@ class Voice extends Model
         'voice_id',
         'audio',
         'title',
+        'count',
+        'section_id',
         'user_id',
     ];
 }

@@ -76,7 +76,12 @@
                     <p>Sections</p>
                   </a>
                 </li>
-                
+                <li class="nav-item">
+                  <a href="{{route('contact')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contact</p>
+                  </a>
+                </li>
               </ul>
             </li>
 
@@ -167,9 +172,25 @@
                     </div>
                     @error('video')
                         <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group mb-3">
+                    <select  id="book-dropdown" class="form-control">
+                        <option value="">-- Select Book --</option>
+                        @foreach($books as $data)
+                        <option value="{{$data->book_id}}">
+                            {{$data->name}}
+                        </option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                      <select id="section-dropdown" name="section_id" class="form-control">
+                      </select>
+                      @error('section_id')
+                        <small class="form-txt text-danger">{{$message}}</small>
                       @enderror
-                  </div> 
-                  
+                  </div>
                   
                   <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
                     
@@ -188,4 +209,94 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-@include('back.includes.footer')
+<footer class="main-footer">
+    <strong>Copyright &copy; 2014-2023 <a href="">Simbaa</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{{URL::asset('back/plugins/jquery/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{URL::asset('back/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<!-- for dropdown -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function () {
+  
+            /*------------------------------------------
+            --------------------------------------------
+            Book Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#book-dropdown').on('change', function () {
+                var idBook = this.value;
+                $("#book-dropdown").html('');
+                $.ajax({
+                    url: "{{url('admin/api/fetch-sections')}}",
+                    type: "POST",
+                    data: {
+                        book_id: idBook,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#section-dropdown').html('<option value="">-- Select Section --</option>');
+                        $.each(result.sections, function (key, value) {
+                            $("#section-dropdown").append('<option value="' + value
+                                .section_id + '">' + value.title + '</option>');
+                        });
+
+                    }
+                });
+            });
+  
+          
+  
+        });
+    </script>
+<!-- for dropdown -->
+
+<!-- Bootstrap 4 -->
+<script src="{{URL::asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{URL::asset('back/plugins/chart.js/Chart.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{URL::asset('back/plugins/sparklines/sparkline.js')}}"></script>
+<!-- JQVMap -->
+<script src="{{URL::asset('back/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{URL::asset('back/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{URL::asset('back/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- daterangepicker -->
+<script src="{{URL::asset('back/plugins/moment/moment.min.js')}}"></script>
+<script src="{{URL::asset('back/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{URL::asset('back/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{URL::asset('back/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{URL::asset('back/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{URL::asset('back/dist/js/adminlte.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{URL::asset('back/dist/js/demo.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{URL::asset('back/dist/js/pages/dashboard.js')}}"></script>
+</body>
+</html>

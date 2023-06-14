@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\BookController;
+use App\Http\Controllers\Back\ContactController;
+use App\Http\Controllers\Back\DropdownController;
 use App\Http\Controllers\Back\SectionController;
 use App\Http\Controllers\Back\VoiceController;
 use App\Http\Controllers\Back\VideoController;
@@ -42,9 +44,9 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
 
         //////////////////////Routes For voices//////////////////////
         Route::get('/voices', [VoiceController::class, 'index'])->name('allVoices');
-        Route::get('/addVoice', [VoiceController::class, 'addVoice'])->name('addVoice');
+        // Route::get('/addVoice', [VoiceController::class, 'addVoice'])->name('addVoice');
         Route::post('/postAddVoice', [VoiceController::class, 'postAddVoice'])->name('postAddVoice');
-        Route::get('/deleteVoice/{id}',[VoiceController::class, 'delete']);
+        Route::get('/deleteVoice/{id}/{section_id}',[VoiceController::class, 'delete']);
         
         Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
         Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
@@ -53,7 +55,7 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
 
         //////////////////////Routes For videos//////////////////////
         Route::get('/videos', [VideoController::class, 'index'])->name('allVideos');
-        Route::get('/addVideo', [VideoController::class, 'addVideo'])->name('addVideo');
+        // Route::get('/addVideo', [VideoController::class, 'addVideo'])->name('addVideo');
         Route::post('/postAddVideo', [VideoController::class, 'postAddVideo'])->name('postAddVideo');
         Route::get('/deleteVideo/{id}',[VideoController::class, 'delete']);
         Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
@@ -82,6 +84,17 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         Route::get('/updateSection/{id}',[SectionController::class, 'update'])->name('updateSection');
         Route::post('/postUpdateSection/{id}',[SectionController::class,'postUpdate'])->name('admin.update.section');
         //////////////////////Routes For Sections//////////////////////
+
+
+        //////////////////////Routes For dropdown//////////////////////
+        Route::get('/addVideo', [DropdownController::class, 'index'])->name('addVideo');
+        Route::get('/addVoice', [DropdownController::class, 'index2'])->name('addVoice');
+        Route::post('api/fetch-sections', [DropdownController::class, 'fetchSection']);
+        //////////////////////Routes For dropdown//////////////////////
+
+        //////////////////////Routes for adminContact/////////////////
+        Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+        //////////////////////Routes for adminContact/////////////////
     });
     
 });

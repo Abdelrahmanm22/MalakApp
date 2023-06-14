@@ -16,6 +16,7 @@ class Video extends Model
         'iframe',
         'video',
         'description',
+        'section_id',
         'user_id',
     ];
 }

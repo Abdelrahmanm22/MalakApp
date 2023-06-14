@@ -18,14 +18,15 @@ class VideoController extends Controller
         $myUser=Auth::user();
         $myVideos=DB::table('users')
         ->join('videos', 'users.user_id', '=', 'videos.user_id')
-        ->select('users.user_name','users.user_id', 'videos.*')
+        ->join('sections', 'sections.section_id', '=', 'videos.section_id')
+        ->select('users.user_name','sections.section_id','sections.title','users.user_id', 'videos.*')
         ->get();
         return view('back.allVideos', compact('myUser','myVideos'))->with('title','Videos');
     }
-    public function addVideo(){
-        $myUser=Auth::user();
-        return view('back.addVideo', compact('myUser'))->with('title','Add Video');
-    } 
+    // public function addVideo(){
+    //     $myUser=Auth::user();
+    //     return view('back.addVideo', compact('myUser'))->with('title','Add Video');
+    // } 
     public function postAddVideo(Request $request){
         $video_file_name = "Not Found";
         $iframe = "NULL";
@@ -35,6 +36,7 @@ class VideoController extends Controller
             'desc'=>'required',
             'iframe' => 'required_without_all:video',
             'video' => 'required_without_all:iframe|mimes:mp4,mov,avi|max:10000',
+            'section_id'=>'required',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
@@ -57,6 +59,7 @@ class VideoController extends Controller
             'description'=>$request->desc,
             'iframe'=>$iframe,
             'video'=>$video_file_name,
+            'section_id'=>$request->section_id,
             'user_id'=>$myUser->user_id,
         ]);
         return redirect()->back()->with(['success'=>'Added successfully']);

@@ -76,7 +76,12 @@
                     <p>Sections</p>
                   </a>
                 </li>
-                
+                <li class="nav-item">
+                  <a href="{{route('contact')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contact</p>
+                  </a>
+                </li>
               </ul>
             </li>
 
@@ -133,9 +138,9 @@
                       <th>Description</th>
                       <th>Source Iframe</th>
                       <th>Source Video</th>
-                      
+                      <th>Section Type</th>
                       <th>Admin Name</th>
-                      <th>UPDATE</th>
+                      <!-- <th>UPDATE</th> -->
                       <th>DELETE</th>
                     </tr>
                   </thead>
@@ -147,8 +152,9 @@
                       <td>{{$v->description}}</td>
                       <td>{{$v->iframe}}</td>
                       <td>{{$v->video}}</td>
+                      <th>{{$v->title}}</th>
                       <td>{{$v->user_name}}</td>
-                      <td><a href="{{url('admin/updateVideo/'.$v->video_id)}}" class="btn btn-default">update</a></td>
+                      <!-- <td><a href="{{url('admin/updateVideo/'.$v->video_id)}}" class="btn btn-default">update</a></td> -->
                       <td><a href="{{url('admin/deleteVideo/'.$v->video_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach

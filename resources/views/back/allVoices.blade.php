@@ -76,7 +76,12 @@
                     <p>Sections</p>
                   </a>
                 </li>
-                
+                <li class="nav-item">
+                  <a href="{{route('contact')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contact</p>
+                  </a>
+                </li>
               </ul>
             </li>
 
@@ -131,8 +136,9 @@
                       <th style="width: 10px">#</th>
                       <th>Audio</th>
                       <th>title</th>
+                      <th>Section Type</th>
                       <th>Admin Name</th>
-                      <th>UPDATE</th>
+                      
                       <th>DELETE</th>
                     </tr>
                   </thead>
@@ -142,9 +148,10 @@
                       <td style="width: 10px">{{ $loop->iteration }}</td>
                       <td>{{$v->audio}}</td>
                       <td>{{$v->title}}</td>
+                      <th>{{$v->sectionName}}</th>
                       <td>{{$v->user_name}}</td>
-                      <td><a href="{{url('admin/updateVoice/'.$v->voice_id)}}" class="btn btn-default">update</a></td>
-                      <td><a href="{{url('admin/deleteVoice/'.$v->voice_id)}}" class="btn btn-danger">Delete</a></td>
+                      <!-- <td><a href="{{url('admin/updateVoice/'.$v->voice_id)}}" class="btn btn-default">update</a></td> -->
+                      <td><a href="{{url('admin/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach
                     
