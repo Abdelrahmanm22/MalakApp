@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Rule;
 use App\Models\Section;
 use App\Models\Setting;
 use App\Models\Video;
@@ -25,7 +26,8 @@ class HomeController extends Controller
         return view('front.time-table');
     }
     public function fatawy(){
-        return view('front.fatwas');
+        $rules = Rule::all();
+        return view('front.fatwas',compact('rules'));
     }
 
     public function sectionsVideo($id){
@@ -51,4 +53,6 @@ class HomeController extends Controller
         $mySection = Section::find($id);
         return view('front.voices',compact('voices','mySection'));
     }
+
+
 }

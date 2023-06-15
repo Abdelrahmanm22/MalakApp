@@ -82,6 +82,12 @@
                     <p>Contact</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('rules')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Rules</p>
+                  </a>
+                </li>
               </ul>
             </li>
 

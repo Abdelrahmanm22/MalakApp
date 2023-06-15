@@ -15,7 +15,6 @@
                  {{$v->title}}
               </audio-player>
             @endforeach
-
           </div>
         </div>
       </div>

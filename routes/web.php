@@ -4,6 +4,7 @@ use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\BookController;
 use App\Http\Controllers\Back\ContactController;
 use App\Http\Controllers\Back\DropdownController;
+use App\Http\Controllers\Back\RuleController;
 use App\Http\Controllers\Back\SectionController;
 use App\Http\Controllers\Back\VoiceController;
 use App\Http\Controllers\Back\VideoController;
@@ -49,8 +50,8 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         Route::post('/postAddVoice', [VoiceController::class, 'postAddVoice'])->name('postAddVoice');
         Route::get('/deleteVoice/{id}/{section_id}',[VoiceController::class, 'delete']);
         
-        Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
-        Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
+        // Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
+        // Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
         //////////////////////Routes For voices//////////////////////
 
 
@@ -59,8 +60,8 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         // Route::get('/addVideo', [VideoController::class, 'addVideo'])->name('addVideo');
         Route::post('/postAddVideo', [VideoController::class, 'postAddVideo'])->name('postAddVideo');
         Route::get('/deleteVideo/{id}',[VideoController::class, 'delete']);
-        Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
-        Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
+        // Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
+        // Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
         //////////////////////Routes For voices//////////////////////
 
         ///for settings=================================
@@ -86,6 +87,15 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         Route::post('/postUpdateSection/{id}',[SectionController::class,'postUpdate'])->name('admin.update.section');
         //////////////////////Routes For Sections//////////////////////
 
+
+        //////////////////////Routes For Rules//////////////////////
+        Route::get('/rules', [RuleController::class, 'index'])->name('rules');
+        Route::get('/deleteRules/{id}', [RuleController::class, 'delete']);
+        Route::get('/addRule', [RuleController::class, 'addRule'])->name('addRule');
+        Route::post('/postAddRule', [RuleController::class, 'postAddRule'])->name('postAddRule');
+        Route::get('/updateRule/{id}',[RuleController::class, 'update'])->name('updateRule');
+        Route::post('/postUpdateRule/{id}',[RuleController::class,'postUpdate'])->name('admin.update.rule');
+        //////////////////////Routes For Rules//////////////////////
 
         //////////////////////Routes For dropdown//////////////////////
         Route::get('/addVideo', [DropdownController::class, 'index'])->name('addVideo');

@@ -47,7 +47,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item ">
-                  <a href="{{route('allVoices')}}" class="nav-link active">
+                  <a href="{{route('allVoices')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Voices</p>
                   </a>
@@ -65,7 +65,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allBooks')}}" class="nav-link ">
+                  <a href="{{route('allBooks')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>
                   </a>
@@ -77,13 +77,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('contact')}}" class="nav-link">
+                  <a href="{{route('contact')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Contact</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('rules')}}" class="nav-link">
+                  <a href="{{route('rules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Rules</p>
                   </a>
@@ -104,7 +104,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Voices</h1>
+          <h1 class="m-0">Add Rule</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -120,54 +120,55 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-    <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Voices Table</h3>
-              </div>
-              <!-- /.card-header -->
-              @if(Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                  {{Session::get('error')}}
-                </div>
-              @endif
-              @if(Session::has('success'))
+    <div class="card card-primary">
+            @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
                   {{Session::get('success')}}
                 </div>
-              @endif
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Audio</th>
-                      <th>title</th>
-                      <th>Section Type</th>
-                      <th>Admin Name</th>
-                      
-                      <th>DELETE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  @foreach($myVoices as $v)
-                      <tr>
-                      <td style="width: 10px">{{ $loop->iteration }}</td>
-                      <td>{{$v->audio}}</td>
-                      <td>{{$v->title}}</td>
-                      <th>{{$v->sectionName}}</th>
-                      <td>{{$v->user_name}}</td>
-                      <!-- <td><a href="{{url('admin/updateVoice/'.$v->voice_id)}}" class="btn btn-default">update</a></td> -->
-                      <td><a href="{{url('admin/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
-                      </tr>
-                  @endforeach
-                    
-                  </tbody>
-                </table>
-                <a href="{{route('addVoice')}}" class="btn btn-dark">Add Voice</a>
+            @endif
+              <div class="card-header">
+                <h3 class="card-title">Add Rule</h3>
               </div>
-              
-              <!-- /.card-body -->
-              
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="{{route('postAddRule')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputName">Question</label>
+                    <input type="text" class="form-control"  name="question"  id="exampleInputName" placeholder="Enter Question">
+                    @error('question')
+                       <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputDescription">Question Details</label>
+                    <textarea rows="4" cols="50" class="form-control" name="questionDetails" id="exampleInputDescription" placeholder="Enter Question Details"></textarea>
+                    @error('questionDetails')
+                       <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputDescription">Answer</label>
+                    <textarea rows="4" cols="50" class="form-control" name="answer" id="exampleInputDescription" placeholder="Enter Answer"></textarea>
+                    @error('answer')
+                       <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
+                  
+                  
+                  
+                  
+                  <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
+                    
+                </div>
+                
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
             </div>
             <!-- /.card -->
     </div><!-- /.container-fluid -->

@@ -47,7 +47,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item ">
-                  <a href="{{route('allVoices')}}" class="nav-link active">
+                  <a href="{{route('allVoices')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Voices</p>
                   </a>
@@ -83,7 +83,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('rules')}}" class="nav-link">
+                  <a href="{{route('rules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Rules</p>
                   </a>
@@ -104,7 +104,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Voices</h1>
+          <h1 class="m-0">Rules</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -122,7 +122,7 @@
     <div class="container-fluid">
     <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Voices Table</h3>
+                <h3 class="card-title">Rules Table</h3>
               </div>
               <!-- /.card-header -->
               @if(Session::has('error'))
@@ -140,30 +140,30 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Audio</th>
-                      <th>title</th>
-                      <th>Section Type</th>
+                      <th>Question</th>
+                      <th>Question Details</th>
+                      <th>Answer</th>
                       <th>Admin Name</th>
-                      
+                      <th>UPDATE</th>
                       <th>DELETE</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($myVoices as $v)
+                  @foreach($myRules as $r)
                       <tr>
                       <td style="width: 10px">{{ $loop->iteration }}</td>
-                      <td>{{$v->audio}}</td>
-                      <td>{{$v->title}}</td>
-                      <th>{{$v->sectionName}}</th>
-                      <td>{{$v->user_name}}</td>
-                      <!-- <td><a href="{{url('admin/updateVoice/'.$v->voice_id)}}" class="btn btn-default">update</a></td> -->
-                      <td><a href="{{url('admin/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
+                      <td>{{$r->question}}</td>
+                      <td>{{$r->questionDetails}}</td>
+                      <th>{{$r->answer}}</th>
+                      <td>{{$r->user_name}}</td>
+                      <td><a href="{{url('admin/updateRule/'.$r->rule_id)}}" class="btn btn-default">update</a></td>
+                      <td><a href="{{url('admin/deleteRules/'.$r->rule_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach
                     
                   </tbody>
                 </table>
-                <a href="{{route('addVoice')}}" class="btn btn-dark">Add Voice</a>
+                <a href="{{route('addRule')}}" class="btn btn-dark">Add Rule</a>
               </div>
               
               <!-- /.card-body -->
