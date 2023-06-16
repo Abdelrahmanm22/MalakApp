@@ -47,7 +47,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item ">
-                  <a href="{{route('allVoices')}}" class="nav-link">
+                  <a href="{{route('allVoices')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Voices</p>
                   </a>
@@ -66,7 +66,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('allSections')}}" class="nav-link">
+                  <a href="{{route('allSections')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Sections</p>
                   </a>
@@ -99,7 +99,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Update Settings</h1>
+          <h1 class="m-0">Update Book</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -122,44 +122,37 @@
                 </div>
             @endif
               <div class="card-header">
-                <h3 class="card-title">Update Settings</h3>
+                <h3 class="card-title">Update Book</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('admin.update.setting',$settings->id)}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('admin.update.section',$section->section_id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputTitle">Name (اسم فضيلة الشيخ)</label>
-                    <input type="text" class="form-control" value="{{$settings->name}}"  name="name"  id="exampleInputTitle" placeholder="Enter Name">
-                    @error('name')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
+                      <label for="exampleInputName">Section Title</label>
+                      <input type="text" class="form-control"  name="title" value="{{$section->title}}"  id="exampleInputName" placeholder="Enter Book Name">
+                      @error('title')
+                        <small class="form-txt text-danger">{{$message}}</small>
+                      @enderror
                   </div>
-                  
                   <div class="form-group">
-                    <label for="exampleInputDescription">Description (محتوي السيره الذاتيه)</label>
-                    <textarea rows="4" cols="50" class="form-control" name="desc" id="exampleInputDescription" placeholder="Description">{{$settings->cv}}</textarea>
-                    @error('desc')
-                       <small class="form-txt text-danger">{{$message}}</small>
+                    <select name="book" class="form-select" aria-label="Default select example">
+                      <option  selected>{{$section->name}}</option>
+                      @foreach($books as $b)
+                        <option value="{{$b->book_id}}">{{$b->name}}</option>
+                      @endforeach
+                    </select>
+                    @error('book')
+                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
 
-                  <div class="form-group">
-                    <label for="exampleInputTitle">Phone</label>
-                    <input type="text" class="form-control" value="{{$settings->phone}}"  name="phone"  id="exampleInputTitle" placeholder="Enter Phone">
-                    @error('phone')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  
-                  
-              
-                  
+
                   <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
-                    
+
                 </div>
-                
+
                 <!-- /.card-body -->
 
                 <div class="card-footer">

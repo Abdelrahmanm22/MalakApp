@@ -15,13 +15,13 @@
       property="og:description"
       content="موقع فضيلة الشيخ مالك وفيق خاص بدروس و خطب امام مسجد آل يحيى بمدينة السادس من اكتوبر"
     />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
-    <script src="{{URL::asset('front/dist/js/qa-modal.js')}}"></script>
-    <script src="{{URL::asset('front/dist/js/dropdown-menu.js')}}"></script>
-    <script type="module" src="{{URL::asset('front/dist/js/audio-player.js')}}"></script>
-    <link rel="stylesheet" href="{{URL::asset('front/dist/css/styles.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('front/dist/css/normalize.css')}}" />
+    
+    <script src="{{URL::asset('front/dist/js/qa-modal-dist.js')}}"></script>
+    <script src="{{URL::asset('front/dist/js/dropdown-menu-dist.js')}}"></script>
+    <script type="module" src="{{URL::asset('front/dist/js/audio-player-dist.js')}}"></script>
+    <link rel="stylesheet" href="{{URL::asset('front/dist/css/styles-min.css')}}" />
+    <link rel="stylesheet" href="{{URL::asset('front/dist/css/normalize-min-dist.css')}}" />
     <link
       rel="icon"
       type="image/png"

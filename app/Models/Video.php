@@ -14,7 +14,6 @@ class Video extends Model
         'video_id',
         'title',
         'iframe',
-        'video',
         'description',
         'section_id',
         'user_id',

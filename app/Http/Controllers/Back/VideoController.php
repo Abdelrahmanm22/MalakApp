@@ -33,17 +33,14 @@ class VideoController extends Controller
         $myUser=Auth::user();
         $validator = Validator::make($request->all(),[
             'title'=>'required|max:300',
-            'desc'=>'required|max:1000',
-            'iframe' => 'required_without_all:video|max:250',
-            'video' => 'required_without_all:iframe|mimes:mp4,mov,avi|max:200',
+            'description'=>'max:1000',
+            'iframe' => 'required|max:250',
             'section_id'=>'required',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
         }
-        if(!empty($request->video)){
-            $video_file_name =$this->saveFile($request->video,'files/videos');
-        }
+        
         if(!empty($request->iframe)){
             $iframe = "";
             $index = strpos($request->iframe, '=');
@@ -56,9 +53,8 @@ class VideoController extends Controller
         
         Video::create([
             'title'=>$request->title,
-            'description'=>$request->desc,
+            'description'=>$request->description,
             'iframe'=>$iframe,
-            'video'=>$video_file_name,
             'section_id'=>$request->section_id,
             'user_id'=>$myUser->user_id,
         ]);
@@ -68,7 +64,7 @@ class VideoController extends Controller
         
         $video = Video::find($id);
         if(!$video){
-            return redirect()->back()->with(['error'=>'This voice not Found']);
+            return redirect()->back()->with(['error'=>'This Video not Found']);
         }
         $video ->delete();
         return redirect()->route('allVideos')->with(['success'=>'Deleted successfully']);

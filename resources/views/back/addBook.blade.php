@@ -151,7 +151,7 @@
                       <div class="custom-file">
                         <input type="file" name="image" placeholder="Enter Book Image" class="custom-file-input"  id="exampleInputFile">
                         
-                        <label class="custom-file-label" for="exampleInputFile">choose image</label>
+                        <label class="custom-file-label" for="exampleInputFile" id="fileLabel">choose image</label>
                         
                       </div>
                       

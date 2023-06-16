@@ -32,7 +32,7 @@ class BookController extends Controller
         $validator = Validator::make($request->all(),[
             'name'=>'required|max:100|unique:books,name',
             'type'=>'required|max:250',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:200',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         //check if data is not correct

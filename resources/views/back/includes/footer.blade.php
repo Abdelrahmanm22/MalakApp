@@ -22,6 +22,13 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
+<script>
+  document.getElementById("exampleInputFile").addEventListener("change", function (e) {
+    var fileName = e.target.files[0].name;
+    document.getElementById("fileLabel").innerHTML = fileName;
+  });
+</script>
 <!-- Bootstrap 4 -->
 <script src="{{URL::asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->

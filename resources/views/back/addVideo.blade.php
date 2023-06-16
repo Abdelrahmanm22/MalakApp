@@ -137,14 +137,12 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputDescription">Video Description</label>
-                    <textarea rows="4" cols="50" class="form-control" name="desc" id="exampleInputDescription" placeholder="Description"></textarea>
+                    <textarea rows="4" cols="50" class="form-control" name="description" id="exampleInputDescription" placeholder="Description"></textarea>
                     @error('desc')
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
-                  <div class="alert alert-warning" role="alert">
-                    Please Enter <a href="#" class="alert-link">URL of Video in YouTube </a> OR <a href="#" class="alert-link">Upload Video From PC</a>
-                  </div>
+                  
                   <div class="form-group">
                     <label for="exampleInputTitle">URL Video</label>
                     <input type="text" class="form-control"  name="iframe"  id="exampleInputTitle" placeholder="Enter URL Video">
@@ -154,26 +152,7 @@
                   </div>
                   
                   
-                  <div class="form-group">
-                    <!-- <img src="" width="100px" height="100px"> -->
-                    <label for="exampleInputFile">Video File</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="video" class="custom-file-input"  id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile" id="fileLabel">choose video</label>
-                        
-                      </div>
-                      
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                      
-                    </div>
-                    @error('video')
-                        <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
+                  
                   <div class="form-group mb-3">
                     <select  id="book-dropdown" class="form-control">
                         <option value="">-- Select Book --</option>

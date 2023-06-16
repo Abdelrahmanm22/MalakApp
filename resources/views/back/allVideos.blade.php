@@ -138,7 +138,6 @@
                       <th>Title</th>
                       <th>Description</th>
                       <th>Source Iframe</th>
-                      <th>Source Video</th>
                       <th>Section Type</th>
                       <th>Admin Name</th>
                       <!-- <th>UPDATE</th> -->
@@ -152,7 +151,6 @@
                       <td>{{$v->title}}</td>
                       <td>{{$v->description}}</td>
                       <td>{{$v->iframe}}</td>
-                      <td>{{$v->video}}</td>
                       <th>{{$v->sectionTitle}}</th>
                       <td>{{$v->user_name}}</td>
                       <!-- <td><a href="{{url('admin/updateVideo/'.$v->video_id)}}" class="btn btn-default">update</a></td> -->

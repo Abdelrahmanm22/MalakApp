@@ -148,7 +148,7 @@
                       <td style="width: 10px">{{ $loop->iteration }}</td>
                       <td>{{$b->name}}</td>
                       <td>{{$b->type}}</td>
-                      <td><img src="{{URL::asset('files/books/'.$b->image)}}" alt="book image"></td>
+                      <td><img src="{{URL::asset('files/books/'.$b->image)}}" width="200"  alt="book image"></td>
                       <td>{{$b->user_name}}</td>
                       <td><a href="{{url('admin/updateBook/'.$b->book_id)}}" class="btn btn-default">update</a></td>
                       </tr>

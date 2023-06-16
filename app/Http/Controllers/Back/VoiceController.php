@@ -36,7 +36,7 @@ class VoiceController extends Controller
         
         $validator = Validator::make($request->all(),[
             'title'=>'required|max:200',
-            'audio'=>'required|max:200',
+            'audio'=>'required',
             'section_id'=>'required',
         ]);
 
