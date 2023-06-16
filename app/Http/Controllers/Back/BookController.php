@@ -31,8 +31,8 @@ class BookController extends Controller
 
         $validator = Validator::make($request->all(),[
             'name'=>'required|max:100|unique:books,name',
-            'type'=>'required|max:100',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif',
+            'type'=>'required|max:250',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:200',
         ]);
 
         //check if data is not correct
@@ -61,8 +61,8 @@ class BookController extends Controller
         $myUser = Auth::user();
         $validator = Validator::make($request->all(),[
             'name'=>'required|max:100',
-            'type'=>'required|max:100',
-            'image'=>'image|mimes:jpeg,png,jpg,gif',
+            'type'=>'required|max:250',
+            'image'=>'image|mimes:jpeg,png,jpg,gif|max:200',
         ]);
 
         //check if data is not correct

@@ -59,12 +59,6 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('settings')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Settings</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="{{route('allBooks')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>

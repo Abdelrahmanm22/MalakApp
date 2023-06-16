@@ -60,16 +60,14 @@ class AdminController extends Controller
         //validate
         $validator = Validator::make($request->all(),[
             'username'=>'required|max:100',
-            'email'=>'required|unique:users,email',
-            'password'=>'required|min:4',
+            'email'=>'required|unique:users,email|max:100',
+            'password'=>'required|min:4|max:100',
         ]);
 
         //check if data is not correct
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
         }
-
-
         $password = Hash::make($request['password']);
         //push data in database
         User::create([

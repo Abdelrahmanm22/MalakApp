@@ -35,8 +35,8 @@ class VoiceController extends Controller
         
         
         $validator = Validator::make($request->all(),[
-            'title'=>'required|max:100',
-            'audio'=>'required',
+            'title'=>'required|max:200',
+            'audio'=>'required|max:200',
             'section_id'=>'required',
         ]);
 
@@ -66,39 +66,39 @@ class VoiceController extends Controller
         $this->decrementCount($section_id);
         return redirect()->route('allVoices')->with(['success'=>'Deleted successfully']);
     }
-    public function update($id){
-        $myUser = Auth::user();
-        $voice= Voice::find($id);
-        return view('back.updateVoice',compact('myUser','voice'))->with('title','Update Voice');
-    }
+    // public function update($id){
+    //     $myUser = Auth::user();
+    //     $voice= Voice::find($id);
+    //     return view('back.updateVoice',compact('myUser','voice'))->with('title','Update Voice');
+    // }
 
 
-    public function postUpdate(Request $request,$id){
+    // public function postUpdate(Request $request,$id){
 
-        $voice = Voice::find($id);
-        $myUser = Auth::user();
-        $validator = Validator::make($request->all(),[
-            'title'=>'required|max:100',
+    //     $voice = Voice::find($id);
+    //     $myUser = Auth::user();
+    //     $validator = Validator::make($request->all(),[
+    //         'title'=>'required|max:100',
             
-        ]);
+    //     ]);
 
-        //check if data is not correct
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
-        if(!empty($request->audio)){
+    //     //check if data is not correct
+    //     if($validator->fails()){
+    //         return redirect()->back()->withErrors($validator);
+    //     }
+    //     if(!empty($request->audio)){
             
-            $audio_file_name =$this->saveFile($request->audio,'files/voices');
-            $voice->update([
-                'audio'=>$audio_file_name,
-            ]);
-        }
-        $voice->update([
-            'title'=>$request->title,
-            'user_id'=>$myUser->user_id,
-        ]);
-        return redirect()->back()->with(['success'=>'updated Successfully']);
-    }
+    //         $audio_file_name =$this->saveFile($request->audio,'files/voices');
+    //         $voice->update([
+    //             'audio'=>$audio_file_name,
+    //         ]);
+    //     }
+    //     $voice->update([
+    //         'title'=>$request->title,
+    //         'user_id'=>$myUser->user_id,
+    //     ]);
+    //     return redirect()->back()->with(['success'=>'updated Successfully']);
+    // }
     public function incrementCount($id){
         $mycount = Section::select('count')->find($id);
         Section::find($id)->update([

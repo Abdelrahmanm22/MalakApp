@@ -31,7 +31,7 @@ class SectionController extends Controller
         $myUser=Auth::user();
 
         $validator = Validator::make($request->all(),[
-            'title'=>'required|max:100',
+            'title'=>'required|max:150',
             'book'=>'required',
         ]);
 
@@ -64,7 +64,7 @@ class SectionController extends Controller
         $section = Section::find($id);
         $myUser = Auth::user();
         $validator = Validator::make($request->all(),[
-            'title'=>'required|max:100',
+            'title'=>'required|max:150',
             'book'=>'required',
         ]);
         //check if data is not correct

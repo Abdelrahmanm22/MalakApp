@@ -29,9 +29,9 @@ class RuleController extends Controller
         $myUser=Auth::user();
 
         $validator = Validator::make($request->all(),[
-            'question'=>'required|max:100',
-            'questionDetails'=>'required',
-            'answer'=>'required',
+            'question'=>'required|max:250',
+            'questionDetails'=>'required|max:1000',
+            'answer'=>'required|max:1000',
         ]);
 
         //check if data is not correct
@@ -61,9 +61,9 @@ class RuleController extends Controller
         $rule = Rule::find($id);
         $myUser = Auth::user();
         $validator = Validator::make($request->all(),[
-            'question'=>'required|max:100',
-            'questionDetails'=>'required',
-            'answer'=>'required',
+            'question'=>'required|max:250',
+            'questionDetails'=>'required|max:1000',
+            'answer'=>'required|max:1000',
         ]);
 
         //check if data is not correct

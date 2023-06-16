@@ -59,12 +59,6 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('settings')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Settings</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="{{route('allBooks')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>
@@ -150,7 +144,7 @@
                       <div class="custom-file">
                         <input type="file" name="audio" class="custom-file-input"  id="exampleInputFile">
                         
-                        <label class="custom-file-label" for="exampleInputFile"></label>
+                        <label class="custom-file-label" for="exampleInputFile" id="fileLabel">choose audio</label>
                         
                       </div>
                       
@@ -223,6 +217,14 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
+<script>
+  document.getElementById("exampleInputFile").addEventListener("change", function (e) {
+    var fileName = e.target.files[0].name;
+    document.getElementById("fileLabel").innerHTML = fileName;
+  });
+</script>
+
 
 <!-- for dropdown -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

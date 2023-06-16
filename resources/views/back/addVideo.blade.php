@@ -59,12 +59,6 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('settings')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Settings</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="{{route('allBooks')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>
@@ -167,7 +161,7 @@
                       <div class="custom-file">
                         <input type="file" name="video" class="custom-file-input"  id="exampleInputFile">
                         
-                        <label class="custom-file-label" for="exampleInputFile"></label>
+                        <label class="custom-file-label" for="exampleInputFile" id="fileLabel">choose video</label>
                         
                       </div>
                       
@@ -238,6 +232,14 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+
+<script>
+  document.getElementById("exampleInputFile").addEventListener("change", function (e) {
+    var fileName = e.target.files[0].name;
+    document.getElementById("fileLabel").innerHTML = fileName;
+  });
 </script>
 
 <!-- for dropdown -->

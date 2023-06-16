@@ -64,11 +64,7 @@ Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
         // Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
         //////////////////////Routes For voices//////////////////////
 
-        ///for settings=================================
-        Route::get('/setting',[SettingController::class, 'index'])->name('settings');
-        Route::get('/updateSetting/{id}',[SettingController::class,'update']);
-        Route::post('/postUpdate/{id}',[SettingController::class,'postUpdate'])->name('admin.update.setting');
-        ///for settings=================================
+
 
 
         //////////////////////Routes For Books//////////////////////

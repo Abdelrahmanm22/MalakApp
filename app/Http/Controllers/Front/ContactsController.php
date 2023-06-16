@@ -13,10 +13,10 @@ class ContactsController extends Controller
     //
     public function postContact(Request $request){
         $validator = Validator::make($request->all(),[
-            'name'=>'required|max:50',
-            'email'=>'required',
+            'name'=>'required|max:100',
+            'email'=>'required|max:100',
             'phone'=>'required|numeric|digits:11',
-            'message'=>'required'
+            'message'=>'required|max:1000'
         ]);
 
         //check if data is not correct
