@@ -235,7 +235,7 @@
                 var idBook = this.value;
                 $("#book-dropdown").html('');
                 $.ajax({
-                    url: "{{url('admin/api/fetch-sections')}}",
+                    url: "{{url('TARSH/api/fetch-sections')}}",
                     type: "POST",
                     data: {
                         book_id: idBook,

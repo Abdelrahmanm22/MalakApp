@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::group(['namespace'=>'Back','prefix'=>'admin'],function(){
+Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
 
 
     /////////////////auth For Admin////////////////////////////

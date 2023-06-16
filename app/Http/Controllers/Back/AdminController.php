@@ -40,7 +40,7 @@ class AdminController extends Controller
 
         if(Auth::attempt(['email'=>$email,'password'=>$pass])) {
             $request->session()->regenerate();
-            return redirect('/admin/home');
+            return redirect('/TARSH/home');
         }else{
             // return "ww";
             return redirect()->back()->with(['error'=>'email or password may be not correct']);
@@ -48,7 +48,7 @@ class AdminController extends Controller
     }
     public function logout(){
         Auth::logout();
-        return redirect('/admin/login');
+        return redirect('/TARSH/login');
     } 
 
     public function register(){

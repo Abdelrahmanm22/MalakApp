@@ -151,8 +151,8 @@
                       <td>{{$v->title}}</td>
                       <th>{{$v->sectionName}}</th>
                       <td>{{$v->user_name}}</td>
-                      <!-- <td><a href="{{url('admin/updateVoice/'.$v->voice_id)}}" class="btn btn-default">update</a></td> -->
-                      <td><a href="{{url('admin/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
+                      
+                      <td><a href="{{url('TARSH/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach
                     

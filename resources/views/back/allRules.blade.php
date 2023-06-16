@@ -151,8 +151,8 @@
                       <td>{{$r->questionDetails}}</td>
                       <th>{{$r->answer}}</th>
                       <td>{{$r->user_name}}</td>
-                      <td><a href="{{url('admin/updateRule/'.$r->rule_id)}}" class="btn btn-default">update</a></td>
-                      <td><a href="{{url('admin/deleteRules/'.$r->rule_id)}}" class="btn btn-danger">Delete</a></td>
+                      <td><a href="{{url('TARSH/updateRule/'.$r->rule_id)}}" class="btn btn-default">update</a></td>
+                      <td><a href="{{url('TARSH/deleteRules/'.$r->rule_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach
                     

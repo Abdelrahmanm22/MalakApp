@@ -47,12 +47,7 @@ return [
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
-        'videos' => [
-            'driver' => 'local',
-            'root' => base_path().'public/files/videos/',
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
-        ],
+        
         'books' => [
             'driver' => 'local',
             'root' => base_path().'public/files/books/',

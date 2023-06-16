@@ -150,7 +150,7 @@
                       <td>{{$s->name}}</td>  <!-- for section name -->
                       <td>{{$s->count}}</td>
                       <td>{{$s->user_name}}</td>
-                      <td><a href="{{url('admin/updateSection/'.$s->section_id)}}" class="btn btn-default">update</a></td>
+                      <td><a href="{{url('TARSH/updateSection/'.$s->section_id)}}" class="btn btn-default">update</a></td>
                       </tr>
                   @endforeach
                     
