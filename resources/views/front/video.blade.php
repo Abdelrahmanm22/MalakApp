@@ -13,7 +13,7 @@
                 <iframe
                   width="1519"
                   height="591"
-                  src="{{'https://www.youtube.com/embed/'.$myVideo->iframe}}"
+                  src="{{$myVideo->iframe}}"
                   title='صحيح البخاري " باب إفشاء السلام "'
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

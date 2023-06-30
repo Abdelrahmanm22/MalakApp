@@ -96,7 +96,7 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         //////////////////////Routes For dropdown//////////////////////
         Route::get('/addVideo', [DropdownController::class, 'index'])->name('addVideo');
         Route::get('/addVoice', [DropdownController::class, 'index2'])->name('addVoice');
-        Route::post('api/fetch-sections', [DropdownController::class, 'fetchSection']);
+        Route::post('/api/fetch-sections', [DropdownController::class, 'fetchSection']);
         //////////////////////Routes For dropdown//////////////////////
 
         //////////////////////Routes for adminContact/////////////////

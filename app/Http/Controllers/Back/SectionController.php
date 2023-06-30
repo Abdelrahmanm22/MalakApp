@@ -71,6 +71,7 @@ class SectionController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
         }
+        // echo $request->book;die;
         $section->update([
             'title'=>$request->title,
             'book_id'=>$request->book,

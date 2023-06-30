@@ -7,7 +7,7 @@
     <div class="container">
         <div class="videos-books">
           <div class="maintitle">
-            <h1>ابواب كتاب صحيح البخاري</h1>
+            <h1>{{$myBook->name}}</h1>
           </div>
           <div class="book-sections">
             @foreach($sections as $s)

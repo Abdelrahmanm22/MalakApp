@@ -34,23 +34,22 @@ class VideoController extends Controller
         $validator = Validator::make($request->all(),[
             'title'=>'required|max:300',
             'description'=>'max:1000',
-            'iframe' => 'required|max:250',
+            'iframe' => 'required|max:500',
             'section_id'=>'required',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
         }
         
-        if(!empty($request->iframe)){
-            $iframe = "";
-            $index = strpos($request->iframe, '=');
-            $str=$request->iframe;
-            
-            for($i=$index+1;$i<Str::length($str);$i++){
-                $iframe.=$str[$i];
+        $iframe = '';
+        $index = strpos($request->iframe, 'src="');
+        $str=$request->iframe;
+        for($i=$index+5;$i<Str::length($str);$i++){
+            if($str[$i]=='"'){
+                break;
             }
+            $iframe.=$str[$i];
         }
-        
         Video::create([
             'title'=>$request->title,
             'description'=>$request->description,

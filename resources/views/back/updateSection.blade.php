@@ -99,7 +99,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Update Book</h1>
+          <h1 class="m-0">Update Section</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -122,7 +122,7 @@
                 </div>
             @endif
               <div class="card-header">
-                <h3 class="card-title">Update Book</h3>
+                <h3 class="card-title">Update Section</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -137,8 +137,8 @@
                       @enderror
                   </div>
                   <div class="form-group">
-                    <select name="book" class="form-select" aria-label="Default select example">
-                      <option  selected>{{$section->name}}</option>
+                    <select name="book"  class="form-select" aria-label="Default select example">
+                      <option value="{{$section->book_id}}" selected>{{$section->name}}</option>
                       @foreach($books as $b)
                         <option value="{{$b->book_id}}">{{$b->name}}</option>
                       @endforeach

@@ -34,7 +34,8 @@ class HomeController extends Controller
         $sections = DB::table('sections')->where('book_id', $id)
         ->get();
         $videos = DB::table('videos')->get();
-        return view('front.video-book-sections',compact('sections','videos'));
+        $myBook = Book::find($id);
+        return view('front.video-book-sections',compact('sections','videos','myBook'));
     }
     public function getVideo($id){
         $myVideo = Video::find($id);
@@ -45,7 +46,8 @@ class HomeController extends Controller
     public function sectionsVoices($id){
         $sections = DB::table('sections')->where('book_id', $id)
         ->get();
-        return view('front.voices-book-sections',compact('sections'));
+        $myBook = Book::find($id);
+        return view('front.voices-book-sections',compact('sections','myBook'));
     }
     public function getVoices($id){
         $voices = DB::table('voices')->where('section_id', $id)
