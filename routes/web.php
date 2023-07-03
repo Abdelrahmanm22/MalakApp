@@ -50,8 +50,8 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         Route::post('/postAddVoice', [VoiceController::class, 'postAddVoice'])->name('postAddVoice');
         Route::get('/deleteVoice/{id}/{section_id}',[VoiceController::class, 'delete']);
         Route::post('voice/reorder',[VoiceController::class, 'reorder'])->name('voice.reorder');///important
-        // Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
-        // Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
+        Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
+        Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
         //////////////////////Routes For voices//////////////////////
 
 
@@ -61,8 +61,8 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         Route::post('/postAddVideo', [VideoController::class, 'postAddVideo'])->name('postAddVideo');
         Route::get('/deleteVideo/{id}',[VideoController::class, 'delete']);
         Route::post('video/reorder',[VideoController::class, 'reorder'])->name('video.reorder');///important
-        // Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
-        // Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
+        Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
+        Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
         //////////////////////Routes For voices//////////////////////
 
 

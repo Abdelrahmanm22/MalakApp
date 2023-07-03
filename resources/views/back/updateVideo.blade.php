@@ -138,46 +138,12 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputDescription">Video Description</label>
-                    <textarea rows="4" cols="50" class="form-control" name="desc" id="exampleInputDescription" placeholder="Description">{{$video->description}}</textarea>
-                    @error('desc')
+                    <textarea rows="4" cols="50" class="form-control" name="description" id="exampleInputDescription" placeholder="Description">{{$video->description}}</textarea>
+                    @error('description')
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
-                  <div class="alert alert-warning" role="alert">
-                    Please Enter <a href="#" class="alert-link">URL of Video in YouTube </a> OR <a href="#" class="alert-link">Upload Video From PC</a>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputURL">URL Video</label>
-                    <input type="text" class="form-control" value="{{$video->iframe}}"  name="iframe"  id="exampleInputURL" placeholder="Enter URL Video">
-                    @error('iframe')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                  
-                  
-                  <div class="form-group">
-                    <!-- <img src="" width="100px" height="100px"> -->
-                    <label for="exampleInputVideo">Video File</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="video" value="{{$video->video}}" class="custom-file-input"  id="exampleInputVideo">
-                        
-                        <label class="custom-file-label" value for="exampleInputVideo">{{$video->video}}</label>
-                        
-                      </div>
-                      
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                      
-                    </div>
-                    @error('video')
-                        <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div> 
-                  
-                  
-                  <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
+            
                     
                 </div>
                 

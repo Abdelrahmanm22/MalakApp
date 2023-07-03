@@ -141,7 +141,7 @@
                       <th>Source Iframe</th>
                       <th>Section Type</th>
                       <th>Admin Name</th>
-                      <!-- <th>UPDATE</th> -->
+                      <th>UPDATE</th>
                       <th>DELETE</th>
                     </tr>
                   </thead>
@@ -155,6 +155,7 @@
                       <td>{{$v->iframe}}</td>
                       <th>{{$v->sectionTitle}}</th>
                       <td>{{$v->user_name}}</td>
+                      <td><a href="{{url('TARSH/updateVideo/'.$v->video_id)}}" class="btn btn-default">Update</a></td>
                       <td><a href="{{url('TARSH/deleteVideo/'.$v->video_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach

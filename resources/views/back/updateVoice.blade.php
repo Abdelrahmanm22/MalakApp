@@ -136,30 +136,8 @@
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
-                  
-                  
-                  <div class="form-group">
-                    <!-- <img src="{{URL::asset('files/voices').'/'.$voice->audio}}" width="100px" height="100px"> -->
-                    <label for="exampleInputFile">Audio File</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="audio" value="{{$voice->audio}}"  class="custom-file-input"  id="exampleInputFile">
-                        <label class="custom-file-label"  for="exampleInputFile">{{$voice->audio}}</label>
-                        
-                      </div>
-                      
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                      
-                    </div>
-                    @error('audio')
-                        <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
-                  </div> 
-                  
-                  
-                  <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
+                
+
                     
                 </div>
                 

@@ -140,7 +140,7 @@
                       <th>title</th>
                       <th>Section Type</th>
                       <th>Admin Name</th>
-                      
+                      <th>UPDATE</th>
                       <th>DELETE</th>
                     </tr>
                   </thead>
@@ -153,7 +153,7 @@
                       <td>{{$v->title}}</td>
                       <th>{{$v->sectionName}}</th>
                       <td>{{$v->user_name}}</td>
-                      
+                      <td><a href="{{url('TARSH/updateVoice/'.$v->voice_id)}}" class="btn btn-default">Update</a></td>
                       <td><a href="{{url('TARSH/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>
                       </tr>
                   @endforeach

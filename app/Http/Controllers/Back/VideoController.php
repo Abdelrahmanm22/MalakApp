@@ -84,41 +84,31 @@ class VideoController extends Controller
         return redirect()->route('allVideos')->with(['success'=>'Deleted successfully']);
     }
 
-    // public function update($id){
-    //     $myUser = Auth::user();
-    //     $video= Video::find($id);
-    //     return view('back.updateVideo',compact('myUser','video'))->with('title','Update Video');
-    // }
+    public function update($id){
+        $myUser = Auth::user();
+        $video= Video::find($id);
+        return view('back.updateVideo',compact('myUser','video'))->with('title','Update Video');
+    }
 
 
-    // public function postUpdate(Request $request,$id){
-    //     // echo $request->video;die;
-    //     $video = Video::find($id);
-    //     $myUser = Auth::user();
-    //     $validator = Validator::make($request->all(),[
-    //         'title'=>'required|max:200',
-    //         'desc'=>'required',
-    //         'iframe' => 'required_without_all:video',
-    //         'video' => 'mimes:mp4,mov,avi|max:10000',
-    //     ]);
-    //     if($validator->fails()){
-    //         return redirect()->back()->withErrors($validator);
-    //     }
+    public function postUpdate(Request $request,$id){
+        $video = Video::find($id);
+        $myUser = Auth::user();
+        $validator = Validator::make($request->all(),[
+            'title'=>'required|max:200',
+            'description'=>'required',
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
         
-    //     //get Image for God
-    //     if(!empty($request->video)){
-    //         $audio_file_name =$this->saveFile($request->video,'files/videos');
-    //         $video->update([
-    //             'video'=>$audio_file_name,
-    //         ]);
-    //     }
-    //     $video->update([
-    //         'title'=>$request->title,
-    //         'description'=>$request->desc,
-    //         'iframe'=>$request->iframe,
-    //         'user_id'=>$myUser->user_id,
-    //     ]);
-    //     return redirect()->back()->with(['success'=>'updated Successfully']);
-    // }
+        
+        $video->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'user_id'=>$myUser->user_id,
+        ]);
+        return redirect()->back()->with(['success'=>'updated Successfully']);
+    }
     
 }
