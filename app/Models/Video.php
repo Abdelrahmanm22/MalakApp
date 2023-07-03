@@ -15,7 +15,15 @@ class Video extends Model
         'title',
         'iframe',
         'description',
+        'position',
         'section_id',
         'user_id',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        Video::creating(function($model){
+            $model->position = Video::max('position')+1;
+        });
+    }
 }

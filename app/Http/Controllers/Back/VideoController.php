@@ -20,8 +20,23 @@ class VideoController extends Controller
         ->join('videos', 'users.user_id', '=', 'videos.user_id')
         ->join('sections', 'sections.section_id', '=', 'videos.section_id')
         ->select('users.user_name','sections.section_id','sections.title as sectionTitle','users.user_id', 'videos.*')
+        ->orderBy('videos.position', 'ASC')
         ->get();
-        return view('back.allVideos', compact('myUser','myVideos'))->with('title','Videos');
+        
+        return view('back.allVideos', compact('myUser'),['myVideos' => $myVideos])->with('title','Videos');
+    }
+    public function reorder(Request $request){
+        $posts = Video::all();
+
+        foreach ($posts as $post) {
+            foreach ($request->order as $order) {
+                if ($order['id'] == $post->video_id){
+                    $post->update(['position' => $order['position']]);
+                }
+            }
+            
+        }
+        return response('Update Successfully.', 200);
     }
     public function addVideo(){
         $myUser=Auth::user();

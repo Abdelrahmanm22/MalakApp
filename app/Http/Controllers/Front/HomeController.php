@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function sectionsVideo($id){
         $sections = DB::table('sections')->where('book_id', $id)
         ->get();
-        $videos = DB::table('videos')->get();
+        $videos = DB::table('videos')->orderBy('position')->get();
         $myBook = Book::find($id);
         return view('front.video-book-sections',compact('sections','videos','myBook'));
     }

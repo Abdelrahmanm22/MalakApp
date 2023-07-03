@@ -60,6 +60,7 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         // Route::get('/addVideo', [VideoController::class, 'addVideo'])->name('addVideo');
         Route::post('/postAddVideo', [VideoController::class, 'postAddVideo'])->name('postAddVideo');
         Route::get('/deleteVideo/{id}',[VideoController::class, 'delete']);
+        Route::post('video/reorder',[VideoController::class, 'reorder'])->name('video.reorder');///important
         // Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
         // Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
         //////////////////////Routes For voices//////////////////////
