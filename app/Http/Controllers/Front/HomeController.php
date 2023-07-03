@@ -51,6 +51,7 @@ class HomeController extends Controller
     }
     public function getVoices($id){
         $voices = DB::table('voices')->where('section_id', $id)
+        ->orderBy('position')
         ->get();
         $mySection = Section::find($id);
         return view('front.voices',compact('voices','mySection'));

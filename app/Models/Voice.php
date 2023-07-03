@@ -15,7 +15,15 @@ class Voice extends Model
         'audio',
         'title',
         'count',
+        'position',
         'section_id',
         'user_id',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        Voice::creating(function($model){
+            $model->position = Voice::max('position')+1;
+        });
+    }
 }

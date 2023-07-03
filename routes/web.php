@@ -49,7 +49,7 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         // Route::get('/addVoice', [VoiceController::class, 'addVoice'])->name('addVoice');
         Route::post('/postAddVoice', [VoiceController::class, 'postAddVoice'])->name('postAddVoice');
         Route::get('/deleteVoice/{id}/{section_id}',[VoiceController::class, 'delete']);
-        
+        Route::post('voice/reorder',[VoiceController::class, 'reorder'])->name('voice.reorder');///important
         // Route::get('/updateVoice/{id}',[VoiceController::class, 'update'])->name('updateVoice');
         // Route::post('/postUpdateVoice/{id}',[VoiceController::class,'postUpdate'])->name('admin.update.voice');
         //////////////////////Routes For voices//////////////////////
