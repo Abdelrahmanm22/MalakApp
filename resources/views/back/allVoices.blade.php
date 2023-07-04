@@ -145,6 +145,7 @@
                       <th>Audio</th>
                       <th>title</th>
                       <th>Section Type</th>
+                      <th>Book Name</th>
                       <th>Admin Name</th>
                       <th>UPDATE</th>
                       <th>DELETE</th>
@@ -158,6 +159,7 @@
                       <td>{{$v->audio}}</td>
                       <td>{{$v->title}}</td>
                       <th>{{$v->sectionName}}</th>
+                      <th>{{$v->bookName}}</th>
                       <td>{{$v->user_name}}</td>
                       <td><a href="{{url('TARSH/updateVoice/'.$v->voice_id)}}" class="btn btn-default">Update</a></td>
                       <td><a href="{{url('TARSH/deleteVoice/'.$v->voice_id.'/'.$v->section_id)}}" class="btn btn-danger">Delete</a></td>

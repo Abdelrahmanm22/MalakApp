@@ -19,7 +19,8 @@ class VideoController extends Controller
         $myVideos=DB::table('users')
         ->join('videos', 'users.user_id', '=', 'videos.user_id')
         ->join('sections', 'sections.section_id', '=', 'videos.section_id')
-        ->select('users.user_name','sections.section_id','sections.title as sectionTitle','users.user_id', 'videos.*')
+        ->join('books', 'sections.book_id', '=', 'books.book_id')
+        ->select('users.user_name','books.name as bookName','sections.section_id','sections.title as sectionTitle','users.user_id', 'videos.*')
         ->orderBy('videos.position', 'ASC')
         ->get();
         

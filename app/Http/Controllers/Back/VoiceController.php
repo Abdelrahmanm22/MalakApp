@@ -20,7 +20,8 @@ class VoiceController extends Controller
         $myVoices=DB::table('users')
         ->join('voices', 'users.user_id', '=', 'voices.user_id')
         ->join('sections', 'sections.section_id', '=', 'voices.section_id')
-        ->select('users.user_name','sections.section_id','sections.title as sectionName','users.user_id', 'voices.*')
+        ->join('books', 'sections.book_id', '=', 'books.book_id')
+        ->select('users.user_name','sections.section_id','books.name as bookName','sections.title as sectionName','users.user_id', 'voices.*')
         ->orderBy('voices.position', 'ASC')
         ->get();
         return view('back.allVoices', compact('myUser','myVoices'))->with('title','Voice');
