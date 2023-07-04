@@ -60,7 +60,7 @@
                 </li>
                 
                 <li class="nav-item">
-                  <a href="{{route('allBooks')}}" class="nav-link active">
+                  <a href="{{route('allBooks')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Books</p>
                   </a>
@@ -84,7 +84,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('questions')}}" class="nav-link">
+                  <a href="{{route('questions')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Questions</p>
                   </a>
@@ -105,7 +105,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Books</h1>
+          <h1 class="m-0">Questions</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -121,53 +121,92 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-    <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Books Table</h3>
-              </div>
-              <!-- /.card-header -->
-              @if(Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                  {{Session::get('error')}}
-                </div>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">(الفتاوى التي لم يتم الرد عليها)</h3>
+        </div>
+        <!-- /.card-header -->
+        @if(Session::has('error'))
+          <div class="alert alert-danger" role="alert">
+            {{Session::get('error')}}
+          </div>
+        @endif
+        @if(Session::has('success'))
+          <div class="alert alert-success" role="alert">
+            {{Session::get('success')}}
+          </div>
+        @endif
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Sender</th>
+                <th>Email</th>
+                <th>Topic</th>
+                <th>Question</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($myQuestions as $q)
+              @if($q->status==0)
+                <tr>
+                <td style="width: 10px">{{ $loop->iteration }}</td>
+                <td>{{$q->sender}}</td>
+                <td>{{$q->email}}</td>
+                <th>{{$q->topic}}</th>
+                <td>{{$q->question}}</td>
+                <td><a href="{{url('TARSH/transfer/'.$q->id)}}" class="btn btn-default">Done</a></td>
+                </tr>
               @endif
-              @if(Session::has('success'))
-                <div class="alert alert-success" role="alert">
-                  {{Session::get('success')}}
-                </div>
-              @endif
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Book Name</th>
-                      <th>Book Type</th>
-                      <th>Image</th>
-                      <th>Admin Name</th>
-                      <th>UPDATE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  @foreach($myBooks as $b)
-                      <tr>
-                      <td style="width: 10px">{{ $loop->iteration }}</td>
-                      <td>{{$b->name}}</td>
-                      <td>{{$b->type}}</td>
-                      <td><img src="{{URL::asset('files/books/'.$b->image)}}" width="200"  alt="book image"></td>
-                      <td>{{$b->user_name}}</td>
-                      <td><a href="{{url('TARSH/updateBook/'.$b->book_id)}}" class="btn btn-default">update</a></td>
-                      </tr>
-                  @endforeach
-                    
-                  </tbody>
-                </table>
-                <a href="{{route('addBook')}}" class="btn btn-dark">Add Book</a>
-              </div>
+            @endforeach
+            </tbody>
+          </table>
+          {{ $myQuestions->links() }}
+        </div>
               
               <!-- /.card-body -->
               
-            </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">(الفتاوى التي تم الرد عليها)</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Sender</th>
+                <th>Email</th>
+                <th>Topic</th>
+                <th>Question</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($myQuestions as $q)
+              @if($q->status==1)
+                <tr>
+                <td style="width: 10px">{{ $loop->iteration }}</td>
+                <td>{{$q->sender}}</td>
+                <td>{{$q->email}}</td>
+                <th>{{$q->topic}}</th>
+                <td>{{$q->question}}</td>
+                </tr>
+              @endif
+            @endforeach
+            </tbody>
+          </table>
+          {{ $myQuestions->links() }}
+        </div>
+              
+              <!-- /.card-body -->
+              
+      </div>
             <!-- /.card -->
     </div><!-- /.container-fluid -->
   </section>

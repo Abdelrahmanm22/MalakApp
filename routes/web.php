@@ -4,6 +4,7 @@ use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\BookController;
 use App\Http\Controllers\Back\ContactController;
 use App\Http\Controllers\Back\DropdownController;
+use App\Http\Controllers\Back\QuestionController;
 use App\Http\Controllers\Back\RuleController;
 use App\Http\Controllers\Back\SectionController;
 use App\Http\Controllers\Back\VoiceController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Back\VideoController;
 use App\Http\Controllers\Back\SettingController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ContactsController;
+use App\Http\Controllers\Front\QuestionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -103,6 +105,12 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         //////////////////////Routes for adminContact/////////////////
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
         //////////////////////Routes for adminContact/////////////////
+
+
+        //////////////////////Routes for adminQuestions/////////////////
+        Route::get('/questions',[QuestionController::class,'index'])->name('questions');
+        Route::get('/transfer/{id}',[QuestionController::class,'transfer'])->name('transfer');
+        //////////////////////Routes for adminQuestions/////////////////
     });
     
 });
@@ -117,5 +125,5 @@ Route::group(['namespace'=>'Front'],function(){
     Route::get('video/{id}',[HomeController::class, 'getVideo'])->name('getVideo');
     Route::get('voice/{id}',[HomeController::class, 'getVoices'])->name('getVoices');
     Route::post('postContact/',[ContactsController::class,'postContact'])->name('postContact');
-    
+    Route::post('postQuestion/',[QuestionsController::class,'postQuestion'])->name('postQuestion');
 });

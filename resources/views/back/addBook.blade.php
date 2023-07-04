@@ -82,6 +82,12 @@
                     <p>Rules</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('questions')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Questions</p>
+                  </a>
+                </li>
               </ul>
             </li>
 

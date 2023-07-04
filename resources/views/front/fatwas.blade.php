@@ -29,24 +29,31 @@
             <div class="maintitle">
               <h1>اطرح سؤالك</h1>
             </div>
-            <form action="">
+            <form action="{{route('postQuestion')}}" method="post">
+              @csrf
               <div class="form-field">
                 <label for="subject">موضوع الفتوى :</label>
                 <input
                   id="subject"
-                  name="subject"
+                  name="topic"
                   type="text"
                   placeholder="اكتب موضوع فتوتك هنا"
                 />
+                @error('topic')
+                <small class="form-txt text-danger">{{$message}}</small>
+                @enderror
               </div>
               <div class="form-field">
                 <label for="name">اسم الراسل :</label>
                 <input
                   id="name"
-                  name="name"
+                  name="sender"
                   type="text"
                   placeholder="اكتب اسمك هنا"
                 />
+                @error('sender')
+                <small class="form-txt text-danger">{{$message}}</small>
+                @enderror
               </div>
               <div class="form-field">
                 <label for="email">البريد الالكترونى :</label>
@@ -56,14 +63,20 @@
                   type="email"
                   placeholder="اكتب عنوان بريدك الالكترونى هنا"
                 />
+                @error('email')
+                <small class="form-txt text-danger">{{$message}}</small>
+                @enderror
               </div>
               <div class="form-field">
                 <label for="message">الفتوى :</label>
                 <textarea
-                  name="message"
+                  name="question"
                   id="message"
                   placeholder="اكتب محتوى فتوتك هنا"
                 ></textarea>
+                @error('question')
+                <small class="form-txt text-danger">{{$message}}</small>
+                @enderror
               </div>
               <button type="submit">ارسال</button>
             </form>
