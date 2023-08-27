@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Fatawasection;
 use App\Models\Rule;
 use App\Models\Section;
 use App\Models\Setting;
@@ -15,21 +16,28 @@ class HomeController extends Controller
 {
     //
     public function index(){
-        $myBooks = Book::all();
+        $myBooks = Book::whereNotIn('book_id', [10])->get();
         return view('front.index',compact('myBooks'));
     }
     public function indexVoices(){
-        $myBooks = Book::all();
+        $myBooks = Book::whereNotIn('book_id', [10])->get();
         return view('front.voices-books',compact('myBooks'));
     }
     public function timeLectures(){
         return view('front.time-table');
     }
     public function fatawy(){
-        $rules = Rule::all();
-        return view('front.fatwas',compact('rules'));
+        $sections = Fatawasection::all();
+        $rules = Rule::orderBy('position')->get();
+        return view('front.fatwas',compact('rules','sections'));
     }
-
+    public function sectionsGomaa(){
+        $sections = DB::table('sections')->where('book_id', 10)
+        ->get();
+        $videos = DB::table('videos')->orderBy('position')->get();
+        $myBook = Book::find(10);
+        return view('front.video-book-sections',compact('sections','videos','myBook'));
+    }
     public function sectionsVideo($id){
         $sections = DB::table('sections')->where('book_id', $id)
         ->get();
@@ -37,6 +45,9 @@ class HomeController extends Controller
         $myBook = Book::find($id);
         return view('front.video-book-sections',compact('sections','videos','myBook'));
     }
+
+
+
     public function getVideo($id){
         $myVideo = Video::find($id);
         return view('front.video',compact('myVideo'));
@@ -56,6 +67,4 @@ class HomeController extends Controller
         $mySection = Section::find($id);
         return view('front.voices',compact('voices','mySection'));
     }
-
-
 }

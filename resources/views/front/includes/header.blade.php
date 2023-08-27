@@ -16,7 +16,7 @@
       content="موقع فضيلة الشيخ مالك وفيق خاص بدروس و خطب امام مسجد آل يحيى بمدينة السادس من اكتوبر"
     />
     
-    
+    <script src="{{URL::asset('front/dist/js/tree-dropdown-dist.js')}}"></script>
     <script src="{{URL::asset('front/dist/js/qa-modal-dist.js')}}"></script>
     <script src="{{URL::asset('front/dist/js/dropdown-menu-dist.js')}}"></script>
     <script type="module" src="{{URL::asset('front/dist/js/audio-player-dist.js')}}"></script>
@@ -44,11 +44,19 @@
               <img src="{{URL::asset('front/assets/images/black-logo.png')}}" alt="the website logo"
             /></a>
           </div>
-          <ul>
-            <li><a href="{{route('videos')}}">تسجيلات مرئية</a></li>
-            <li><a href="{{route('voices')}}">تسجيلات صوتية</a></li>
+          <div id="icon" opened="false">
+            <span id="top"></span>
+            <span id="center"></span>
+            <span id="bottom"></span>
+          </div>
+          <ul style="background-image: url(/front/assets/icons/backbodyblock.png)">
+            <li><a href="{{route('videos')}}" name="video">تسجيلات مرئية</a></li>
+            <li>
+              <a href="{{route('voices')}}" name="voice">تسجيلات صوتية</a>
+            </li>
             <li><a href="{{route('timeLectures')}}">مواعيد المحاضرات</a></li>
             <li><a href="{{route('fatawy')}}">الفتاوى</a></li>
+            <li><a href="{{route('sectionsGomaa')}}">خطب الجمعة</a></li>
           </ul>
         </nav>
       </div>
@@ -56,6 +64,23 @@
     <!--Start Hero-->
     <div class="hero">
       <img src="{{URL::asset('front/assets/images/hero.png')}}" alt="Hero background" />
+      <div id="socials">
+        <div class="icon">
+          <a href="https://www.youtube.com/@Malikwafiq" target="_blank">
+            <img src="{{URL::asset('front/assets/icons/youtube (2).png')}}" alt="youtube link" />
+          </a>
+        </div>
+        <div class="icon">
+          <a href="https://chat.whatsapp.com/FD0cvZ2SrQkKUV3G0QqEtJ" target="_blank">
+            <img src="{{URL::asset('front/assets/icons/whatsapp.png')}}" alt="whatsapp link" />
+          </a>
+        </div>
+        <div class="icon">
+          <a href="https://www.facebook.com/profile.php?id=100063592220297&locale=ar_AR" target="_blank">
+            <img src="{{URL::asset('front/assets/icons/facebook.png')}}" alt="facebook link" />
+          </a>
+        </div>
+      </div>
     </div>
     <!--End Hero-->
     <!--End Header-->

@@ -15,6 +15,15 @@ class Rule extends Model
         'question',
         'questionDetails',
         'answer',
+        'position',
+        'section_id',
         'user_id',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        Rule::creating(function($model){
+            $model->position = Rule::max('position')+1;
+        });
+    }
 }

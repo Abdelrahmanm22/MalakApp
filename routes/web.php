@@ -4,6 +4,7 @@ use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\BookController;
 use App\Http\Controllers\Back\ContactController;
 use App\Http\Controllers\Back\DropdownController;
+use App\Http\Controllers\Back\FatawasectionController;
 use App\Http\Controllers\Back\QuestionController;
 use App\Http\Controllers\Back\RuleController;
 use App\Http\Controllers\Back\SectionController;
@@ -65,7 +66,7 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         Route::post('video/reorder',[VideoController::class, 'reorder'])->name('video.reorder');///important
         Route::get('/updateVideo/{id}',[VideoController::class, 'update'])->name('updateVideo');
         Route::post('/postUpdateVideo/{id}',[VideoController::class,'postUpdate'])->name('admin.update.video');
-        //////////////////////Routes For voices//////////////////////
+        //////////////////////Routes For videos//////////////////////
 
 
 
@@ -88,12 +89,18 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
 
 
         //////////////////////Routes For Rules//////////////////////
+        Route::get('/sectionsRules', [FatawasectionController::class, 'index'])->name('sectionsRules');
+        Route::get('/addSectionFatwa', [FatawasectionController::class, 'addSectionFatwa'])->name('addSectionFatwa');
+        Route::post('/postAddSectionFatwa', [FatawasectionController::class, 'postAddSectionFatwa'])->name('postAddSectionFatwa');
+        Route::get('/updateSectionFatwa/{id}',[FatawasectionController::class, 'update'])->name('updateSectionFatwa');
+        Route::post('/postUpdateSectionFatwa/{id}',[FatawasectionController::class,'postUpdate'])->name('admin.update.sectionFatwa');
         Route::get('/rules', [RuleController::class, 'index'])->name('rules');
         Route::get('/deleteRules/{id}', [RuleController::class, 'delete']);
         Route::get('/addRule', [RuleController::class, 'addRule'])->name('addRule');
         Route::post('/postAddRule', [RuleController::class, 'postAddRule'])->name('postAddRule');
         Route::get('/updateRule/{id}',[RuleController::class, 'update'])->name('updateRule');
         Route::post('/postUpdateRule/{id}',[RuleController::class,'postUpdate'])->name('admin.update.rule');
+        Route::post('rule/reorder',[RuleController::class, 'reorder'])->name('rule.reorder');///important
         //////////////////////Routes For Rules//////////////////////
 
         //////////////////////Routes For dropdown//////////////////////
@@ -111,6 +118,9 @@ Route::group(['namespace'=>'Back','prefix'=>'TARSH'],function(){
         Route::get('/questions',[QuestionController::class,'index'])->name('questions');
         Route::get('/transfer/{id}',[QuestionController::class,'transfer'])->name('transfer');
         //////////////////////Routes for adminQuestions/////////////////
+
+
+    
     });
     
 });
@@ -120,6 +130,7 @@ Route::group(['namespace'=>'Front'],function(){
     Route::get('/voices', [HomeController::class, 'indexVoices'])->name('voices');
     Route::get('/timeLectures', [HomeController::class, 'timeLectures'])->name('timeLectures');
     Route::get('/fatawy', [HomeController::class, 'fatawy'])->name('fatawy');
+    Route::get('/sectionsGomaa', [HomeController::class, 'sectionsGomaa'])->name('sectionsGomaa');
     Route::get('sectionsVideo/{id}',[HomeController::class, 'sectionsVideo'])->name('sectionsVideo');
     Route::get('sectionsVoices/{id}',[HomeController::class, 'sectionsVoices'])->name('sectionsVoices');
     Route::get('video/{id}',[HomeController::class, 'getVideo'])->name('getVideo');

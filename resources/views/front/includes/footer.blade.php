@@ -1,5 +1,5 @@
-      <!--Start Footer-->
-      <footer class="footer">
+<!--Start Footer-->
+<footer class="footer">
         <div class="container">
           <div class="copyright">
             <p>
@@ -9,10 +9,7 @@
           </div>
           <div class="socials">
             <div class="youtube">
-              <a
-                href="https://www.youtube.com/@user-ud4zi5ux8w"
-                target="_blank"
-              >
+              <a href="https://www.youtube.com/@Malikwafiq" target="_blank">
                 <img
                   src="{{URL::asset('front/assets/icons/youtube.png')}}"
                   alt="youtube channel link"

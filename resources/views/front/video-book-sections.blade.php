@@ -4,13 +4,13 @@
       class="main-content"
       style="background-image: url(/front/assets/images/background.png)"
     >
-    <div class="container">
+      <div class="container">
         <div class="videos-books">
           <div class="maintitle">
             <h1>{{$myBook->name}}</h1>
           </div>
-          <div class="book-sections">
-            @foreach($sections as $s)
+          <div class="book-sections" >
+          @foreach($sections as $s)
               <dropdown-menu class="dropdown-menu" data-name="{{$s->title}}">
                 @foreach($videos as $v)
                   @if($s->section_id==$v->section_id)
@@ -18,8 +18,7 @@
                   @endif
                 @endforeach
               </dropdown-menu>
-            @endforeach
-
+          @endforeach
           </div>
         </div>
       </div>

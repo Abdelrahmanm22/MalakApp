@@ -79,7 +79,13 @@
                 <li class="nav-item">
                   <a href="{{route('rules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Rules</p>
+                    <p>Fatwa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('sectionsRules')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sections for Fatawy</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -155,10 +161,17 @@
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
-                  
-                  
-                  
-                  
+                  <div class="form-group">
+                    <select name="section" class="form-select" aria-label="Default select example">
+                      <option value=" " selected>Open this select section</option>
+                      @foreach($sections as $s)
+                      <option value="{{$s->id}}">{{$s->name}}</option>
+                      @endforeach
+                    </select>
+                    @error('section')
+                       <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
                   <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
                     
                 </div>

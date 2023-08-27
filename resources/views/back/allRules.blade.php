@@ -80,7 +80,13 @@
                 <li class="nav-item">
                   <a href="{{route('rules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Rules</p>
+                    <p>Fatwa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('sectionsRules')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sections for Fatawy</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -105,7 +111,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Rules</h1>
+          <h1 class="m-0">Fatawy</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -123,7 +129,7 @@
     <div class="container-fluid">
     <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Rules Table</h3>
+                <h3 class="card-title">Fatawy Table</h3>
               </div>
               <!-- /.card-header -->
               @if(Session::has('error'))
@@ -137,25 +143,29 @@
                 </div>
               @endif
               <div class="card-body">
-                <table class="table table-bordered">
+                <table id="table" class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
+                      <th width="30px">#</th> 
                       <th>Question</th>
                       <th>Question Details</th>
                       <th>Answer</th>
+                      <th>Section Name</th>
                       <th>Admin Name</th>
                       <th>UPDATE</th>
                       <th>DELETE</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tablecontents">
                   @foreach($myRules as $r)
-                      <tr>
+                      <tr class="row1" data-id="{{$r->rule_id}}">
                       <td style="width: 10px">{{ $loop->iteration }}</td>
+                      <td class="pl-3"><i class="fa fa-sort"></i></td>
                       <td>{{$r->question}}</td>
                       <td>{{$r->questionDetails}}</td>
                       <th>{{$r->answer}}</th>
+                      <th>{{$r->name}}</th>
                       <td>{{$r->user_name}}</td>
                       <td><a href="{{url('TARSH/updateRule/'.$r->rule_id)}}" class="btn btn-default">update</a></td>
                       <td><a href="{{url('TARSH/deleteRules/'.$r->rule_id)}}" class="btn btn-danger">Delete</a></td>
@@ -176,4 +186,112 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-@include('back.includes.footer')
+<footer class="main-footer">
+    <strong>Copyright &copy; 2014-2023 <a href="">Simbaa</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{{URL::asset('back/plugins/jquery/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{URL::asset('back/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<!-- begin rules reorder -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $("#table").DataTable();
+// this is need to Move Ordera accordin user wish Arrangement
+        $( "#tablecontents" ).sortable({
+          items: "tr",
+          cursor: 'move',
+          opacity: 0.6,
+          update: function() {
+              sendOrderToServer();
+          }
+        });
+
+        function sendOrderToServer() {
+          var order = [];
+          var token = $('meta[name="csrf-token"]').attr('content');
+        //   by this function User can Update hisOrders or Move to top or under
+          $('tr.row1').each(function(index,element) {
+            order.push({
+              id: $(this).attr('data-id'),
+              position: index+1
+            });
+          });
+// the Ajax Post update 
+          $.ajax({
+            type: "POST", 
+            dataType: "json", 
+            url: "{{ url('TARSH/rule/reorder') }}",
+                data: {
+              order: order,
+              _token: token
+            },
+            success: function(response) {
+                if (response.status == "success") {
+                  console.log(response);
+                } else {
+                  console.log(response);
+                }
+            }
+          });
+        }
+      });
+    </script>
+<!-- end rules reorder -->
+
+<script>
+  document.getElementById("exampleInputFile").addEventListener("change", function (e) {
+    var fileName = e.target.files[0].name;
+    document.getElementById("fileLabel").innerHTML = fileName;
+  });
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{URL::asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{URL::asset('back/plugins/chart.js/Chart.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{URL::asset('back/plugins/sparklines/sparkline.js')}}"></script>
+<!-- JQVMap -->
+<script src="{{URL::asset('back/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{URL::asset('back/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{URL::asset('back/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- daterangepicker -->
+<script src="{{URL::asset('back/plugins/moment/moment.min.js')}}"></script>
+<script src="{{URL::asset('back/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{URL::asset('back/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{URL::asset('back/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{URL::asset('back/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{URL::asset('back/dist/js/adminlte.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{URL::asset('back/dist/js/demo.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{URL::asset('back/dist/js/pages/dashboard.js')}}"></script>
+</body>
+</html>

@@ -79,7 +79,13 @@
                 <li class="nav-item">
                   <a href="{{route('rules')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Rules</p>
+                    <p>Fatwa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('sectionsRules')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sections for Fatawy</p>
                   </a>
                 </li>
                 <li class="nav-item">

@@ -47,7 +47,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item ">
-                  <a href="{{route('allVoices')}}" class="nav-link active">
+                  <a href="{{route('allVoices')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Voices</p>
                   </a>
@@ -83,7 +83,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('sectionsRules')}}" class="nav-link">
+                  <a href="{{route('sectionsRules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Sections for Fatawy</p>
                   </a>
@@ -110,7 +110,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Update Voice</h1>
+          <h1 class="m-0">Update Section of Fatawy</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -133,25 +133,24 @@
                 </div>
             @endif
               <div class="card-header">
-                <h3 class="card-title">Update Voice</h3>
+                <h3 class="card-title">Update Section(تعدبل قسم الفتاوي)</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('admin.update.voice',$voice->voice_id)}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('admin.update.sectionFatwa',$section->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputTitle">Voice Title</label>
-                    <input type="text" class="form-control" value="{{$voice->title}}"  name="title"  id="exampleInputTitle" placeholder="Enter Voice Title">
-                    @error('title')
-                       <small class="form-txt text-danger">{{$message}}</small>
-                    @enderror
+                      <label for="exampleInputName">Section name</label>
+                      <input type="text" class="form-control"  name="name" value="{{$section->name}}"  id="exampleInputName" placeholder="Enter section Name">
+                      @error('name')
+                        <small class="form-txt text-danger">{{$message}}</small>
+                      @enderror
                   </div>
-                
+                  <!-- <input type="hidden" class="form-control" name="id" id="exampleInputID" value="" > -->
 
-                    
                 </div>
-                
+
                 <!-- /.card-body -->
 
                 <div class="card-footer">

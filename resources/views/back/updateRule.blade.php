@@ -80,7 +80,13 @@
                 <li class="nav-item">
                   <a href="{{route('rules')}}" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Rules</p>
+                    <p>Fatwa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('sectionsRules')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sections for Fatawy</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -153,6 +159,17 @@
                     <label for="exampleInputDescription">Answer</label>
                     <textarea rows="4" cols="50" class="form-control" name="answer" id="exampleInputDescription" placeholder="Enter Answer">{{$rule->answer}}</textarea>
                     @error('answer')
+                       <small class="form-txt text-danger">{{$message}}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <select name="section" class="form-select" aria-label="Default select example">
+                      <option value="{{$rule->id}}"  selected>{{$rule->name}}</option>
+                      @foreach($sections as $s)
+                        <option value="{{$s->id}}">{{$s->name}}</option>
+                      @endforeach
+                    </select>
+                    @error('section')
                        <small class="form-txt text-danger">{{$message}}</small>
                     @enderror
                   </div>
